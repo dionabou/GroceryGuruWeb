@@ -1,2 +1,2 @@
-# GroceryGuru
+# GroceryGuruWeb
 Capstone project
