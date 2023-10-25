@@ -1,0 +1,94 @@
+
+/* Login.css */
+
+/* Styles for the background container */
+.login-container {
+    display: flex;
+    flex-direction: column; /* Place the title above the form */
+    align-items: center;
+    justify-content: flex-start; /* Align items at the top */
+    min-height: 100vh;
+    background-image: url("../assets/Grocery.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  
+  /* Styles for the title "Welcome to Groceryguru" */
+  .page-title {
+    font-family: 'Algerian', sans-serif; /* Apply Algerian font */
+    font-size: 48px; /* Increase font size to make it bigger */
+    margin-bottom: 20px; /* Add margin at the bottom of the title */
+    text-align: center; /* Center the text horizontally */
+  }
+
+  .login-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px; /* Increase padding to make the form bigger */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin: 15px 0; /* Increase margin to add more space between form groups */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 10px; /* Increase margin to add more space between label and input */
+    font-size: 18px; /* Increase font size */
+  }
+  
+  .form-group input {
+    padding: 10px; /* Increase padding to make the input fields bigger */
+    font-size: 16px; /* Increase font size */
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+
+  
+  
+  .signin-button {
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 10px 18px; /* Increase padding to make the buttons bigger */
+    border-radius: 4px;
+    font-size: 16px; /* Increase font size */
+
+     /* Hover effect */
+  &:hover {
+    background-color: darkblue; /* Change the background color on hover */
+    box-shadow: 0 0 10px 4px black; /* Add black padding (box-shadow) on hover */
+  }
+  }
+
+
+
+.forgot-password {
+    text-align: right; /* Align the "Forgot Password" link to the right */
+    margin-top: 10px; /* Add some margin to separate it from the buttons */
+  }
+  
+  .forgot-password a {
+    text-decoration: none; /* Remove underlines from the link */
+    color: blue; /* Use a color for the link, you can choose your own color */
+    font-size: 16px; /* Set the font size for the link */
+    transition: color 0.3s ease; /* Add a color transition effect */
+  
+    /* Hover effect */
+    &:hover {
+      color: black; /* Change the link color on hover */
+    }
+  }

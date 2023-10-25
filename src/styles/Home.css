@@ -1,0 +1,21 @@
+
+.home {
+    background-color: white; /* Set background color */
+    color: black; /* Set text color */
+    padding: 10px; /* Add some padding for better spacing */
+    display: flex;
+    justify-content: flex-end; /* Align links to the right */
+  }
+  
+  .home a {
+    text-decoration: none;
+    color: black; /* Set link color */
+    margin: 0 10px; /* Add margin to separate links */
+    font-size: 16px; /* Set font size */
+  }
+  
+  .home a:hover {
+    text-decoration: underline; /* Underline links on hover */
+  }
+  
+ 
