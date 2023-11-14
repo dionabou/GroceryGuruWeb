@@ -1,0 +1,33 @@
+.select-button {
+    height: 45px;
+    width: 300px;
+  }
+  
+  .select-button .overlap-group-2 {
+    border-radius: 15px;
+    height: 45px;
+    position: relative;
+  }
+  
+  .select-button .rectangle-2 {
+    background-color: #054fb9;
+    border-radius: 15px;
+    height: 45px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 300px;
+  }
+  
+  .select-button .text-wrapper-34 {
+    color: #ffffff;
+    font-family: "Lato", Helvetica;
+    font-size: 24px;
+    font-weight: 800;
+    left: 121px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 7px;
+  }
+  

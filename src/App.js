@@ -6,10 +6,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignUp from './pages/SignUp';
 import Footer from './components/Footer';
 import Login from './pages/Login';
+import ProductDetailPage from './pages/ProductDetails';
+import { BuildingList } from './pages/BuildingList';
+import { ProductDetails } from './pages/ProductDetails';
+import { Compare } from './compare/Compare';
+import { Main } from './ShoppingList/Main';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App">h
       <Router>
        { <Navbar/> }
         <Routes>
@@ -26,3 +31,4 @@ function App() {
 }
 
 export default App;
+
