@@ -1,0 +1,134 @@
+.main {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .main .div-2 {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .main .nav-bar-instance {
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+  }
+  
+  .main .trip-info-instance {
+    left: 318px !important;
+    position: absolute !important;
+    top: 90px !important;
+  }
+  
+  .main .kroger-items-instance {
+    left: 401px !important;
+    position: absolute !important;
+    top: 296px !important;
+  }
+  
+  .main .meijer-items-instance {
+    left: 401px !important;
+    position: absolute !important;
+    top: 629px !important;
+  }
+  
+  .main .text-wrapper-41 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    left: 45px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 311px;
+    white-space: nowrap;
+  }
+  
+  .main .text-wrapper-42 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 16px;
+    font-weight: 800;
+    left: 169px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 316px;
+    white-space: nowrap;
+  }
+  
+  .main .text-wrapper-43 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 16px;
+    font-weight: 800;
+    left: 310px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-decoration: underline;
+    top: 316px;
+    white-space: nowrap;
+  }
+  
+  .main .text-wrapper-44 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 16px;
+    font-weight: 800;
+    left: 45px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-decoration: underline;
+    top: 387px;
+    white-space: nowrap;
+  }
+  
+  .main .text-wrapper-45 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+    left: 45px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 353px;
+    white-space: nowrap;
+  }
+  
+  .main .text-wrapper-46 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 16px;
+    font-weight: 800;
+    left: 45px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-decoration: underline;
+    top: 422px;
+    white-space: nowrap;
+  }
+  
+  .main .text-wrapper-47 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 16px;
+    font-weight: 800;
+    left: 45px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-decoration: underline;
+    top: 457px;
+    white-space: nowrap;
+  }
+  
