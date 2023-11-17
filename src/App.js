@@ -12,14 +12,16 @@ import { ProductDetails } from './pages/ProductDetails';
 import { Compare } from './compare/Compare';
 import { Main } from './ShoppingList/Main';
 
+
 function App() {
   return (
-    <div className="App">h
+    <div className="App">
       <Router>
        { <Navbar/> }
         <Routes>
           <Route path="/" exact Component={SignUp}/>
-          {/* <Route path="/Home" exact component={Home} /> */}
+          <Route path="/Login" exact component={Login} /> 
+          <Route path="/Home" exact component={Home} /> 
         </Routes>
        </Router>
        <label htmlFor=""></label>

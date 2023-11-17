@@ -1,83 +1,79 @@
-
 /* Styles for the title "Welcome to Groceryguru" */
 .page-title {
-    font-family: 'Algerian', sans-serif; /* Apply Algerian font */
-    font-size: 48px; /* Increase font size to make it bigger */
-    margin-bottom: 20px; /* Add margin at the bottom of the title */
-    text-align: center; /* Center the text horizontally */
-  }
+  font-family: 'Algerian', sans-serif;
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .signup-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
+body {
+  background-image: url("../assets/Grocery.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
 
-  
-  body {
-    background-image: url("../assets/Grocery.jpg"); 
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
-  
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  form {
-    text-align: left;
-  }
-  
-  label {
-    display: block;
-    margin: 10px 0;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: darkblue;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: darkblue;
-  }
-  
-  p {
-    font-size: 14px;
-    margin-top: 20px;
-    color: #666;
-  }
-  
-  a {
-    text-decoration: none;
-    color: blue;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: darkblue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+button:hover {
+  background-color: blue; /* Change the background color on hover */
+}
+
+p {
+  font-size: 14px;
+  margin-top: 20px;
+  color: #666;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
