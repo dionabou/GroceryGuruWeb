@@ -29,7 +29,7 @@ const SignUp = () => {
     if (validateForm()) {
       console.log('Form submitted:', formData);
       // Navigate to the home page
-      navigate('../pages/Home.js');
+      navigate("Home");
     }
   };
 
@@ -38,6 +38,7 @@ const SignUp = () => {
     const requiredFieldsFilled =
       formData.username &&
       formData.email &&
+      formData.address &&
       formData.zip &&
       formData.hourlyRate &&
       formData.make &&
@@ -81,6 +82,16 @@ const SignUp = () => {
               type="email"
               id="email"
               value={formData.email}
+              onChange={handleChange}
+              required
+            />
+
+            
+          <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              value={formData.address}
               onChange={handleChange}
               required
             />
@@ -172,7 +183,7 @@ const SignUp = () => {
             <a href="/terms-of-service">Terms of Service</a>.
           </p>
           <p>
-            Already have an account? <Link to="./pages/Login.js">Sign in</Link>
+          Already have an account? <a onClick={() => navigate("Login")}>Sign in</a>
           </p>
         </div>
       </div>

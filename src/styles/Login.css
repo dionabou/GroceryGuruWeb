@@ -78,17 +78,17 @@
 
 .forgot-password {
     text-align: right; /* Align the "Forgot Password" link to the right */
-    margin-top: 10px; /* Add some margin to separate it from the buttons */
+    margin-top:20px;
   }
   
-  .forgot-password a {
-    text-decoration: none; /* Remove underlines from the link */
-    color: blue; /* Use a color for the link, you can choose your own color */
-    font-size: 16px; /* Set the font size for the link */
-    transition: color 0.3s ease; /* Add a color transition effect */
   
-    /* Hover effect */
-    &:hover {
-      color: black; /* Change the link color on hover */
-    }
+
+  a {
+    text-decoration: none;
+    color: blue;
   }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

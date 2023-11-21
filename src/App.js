@@ -11,6 +11,7 @@ import { BuildingList } from './pages/BuildingList';
 import { ProductDetails } from './pages/ProductDetails';
 import { Compare } from './compare/Compare';
 import { Main } from './ShoppingList/Main';
+import UpdatePassword from './pages/UpdatePassword';
 
 
 function App() {
@@ -19,9 +20,11 @@ function App() {
       <Router>
        { <Navbar/> }
         <Routes>
-          <Route path="/" exact Component={SignUp}/>
-          <Route path="/Login" exact component={Login} /> 
-          <Route path="/Home" exact component={Home} /> 
+          <Route path="/" exact Component={ProductDetails}/>
+           <Route path="/Login" Component={Login} /> 
+          <Route path="/Home" Component={Home} />  
+          <Route path="/UpdatePassword" Component={UpdatePassword} /> 
+          <Route path="/BuildingList" Component={BuildingList} />  
         </Routes>
        </Router>
        <label htmlFor=""></label>
