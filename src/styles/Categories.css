@@ -1,0 +1,78 @@
+/* Categories.css */
+
+/* Container styles */
+.container {
+    max-width: 800px; /* Increase the max-width for a wider container */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    cursor: pointer; /* Add cursor pointer for better UX */
+    text-align: left; /* Move categories heading to the left */
+}
+
+/* List styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0; /* Move the categories list to the left */
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 8px;
+}
+/* Categories.css */
+
+/* Container styles */
+.container {
+    max-width: 800px; /* Increase the max-width for a wider container */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    cursor: pointer; /* Add cursor pointer for better UX */
+    text-align: left; /* Move categories heading to the left */
+}
+
+/* List styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0; /* Move the categories list to the left */
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 8px;
+}
