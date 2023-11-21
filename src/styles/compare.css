@@ -1,0 +1,73 @@
+.compare {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .compare .div-2 {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .compare .nav-bar-instance {
+    left: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+  }
+  
+  .compare .text-wrapper-73 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 32px;
+    font-weight: 800;
+    left: 654px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 119px;
+    white-space: nowrap;
+  }
+  
+  .compare .text-wrapper-74 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 24px;
+    font-weight: 800;
+    left: 279px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 157px;
+  }
+  
+  .compare .text-wrapper-75 {
+    color: #000000;
+    font-family: "Lato-ExtraBold", Helvetica;
+    font-size: 24px;
+    font-weight: 800;
+    left: 1047px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 157px;
+  }
+  
+  .compare .user-created-block-instance {
+    left: 25px !important;
+    position: absolute !important;
+    top: 187px !important;
+  }
+  
+  .compare .optimized-block-instance {
+    left: 765px !important;
+    position: absolute !important;
+    top: 187px !important;
+  }
+  
