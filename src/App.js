@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" exact Component={Categories}/>
+          <Route path="/" exact Component={SignUp}/>
            <Route path="/Login" Component={Login} /> 
           <Route path="/Home" Component={Home} />  
           <Route path="/UpdatePassword" Component={UpdatePassword} /> 
