@@ -6,21 +6,20 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SignUp from './pages/SignUp';
 import Footer from './components/Footer';
 import Login from './pages/Login';
+import StoreSelector from './pages/StoreSelector';
+import Categories from './pages/Categories';
 
 function App() {
   return (
     <div className="App">
       <Router>
-       { <Navbar/> }
+        <Navbar />
         <Routes>
-          <Route path="/" exact Component={SignUp}/>
-          {/* <Route path="/Home" exact component={Home} /> */}
+        <Route path="/" exact Component={StoreSelector}/>
+          {/* <Route path="/Home" element={<Home />} /> */}
         </Routes>
-       </Router>
-       <label htmlFor=""></label>
-       <label htmlFor=""></label>
-       <label htmlFor=""></label>
-       <Footer/>
+      </Router>
+      <Footer />
     </div>
   );
 }
