@@ -11,21 +11,20 @@ import { BuildingList } from './pages/BuildingList';
 import { ProductDetails } from './pages/ProductDetails';
 import { Compare } from './compare/Compare';
 import { Main } from './ShoppingList/Main';
+import StoreSelector from './pages/StoreSelector';
+import Categories from './pages/Categories';
 
 function App() {
   return (
     <div className="App">h
       <Router>
-       { <Navbar/> }
+        <Navbar />
         <Routes>
-          <Route path="/" exact Component={SignUp}/>
-          {/* <Route path="/Home" exact component={Home} /> */}
+        <Route path="/" exact Component={StoreSelector}/>
+          {/* <Route path="/Home" element={<Home />} /> */}
         </Routes>
-       </Router>
-       <label htmlFor=""></label>
-       <label htmlFor=""></label>
-       <label htmlFor=""></label>
-       <Footer/>
+      </Router>
+      <Footer />
     </div>
   );
 }
