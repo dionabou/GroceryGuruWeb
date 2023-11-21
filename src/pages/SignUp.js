@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/SignUp.css';
+import '../pages/Home.js';
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     zip: '',
     hourlyRate: '',
+    make: '',
+    model: '',
+    year: '',
     carMpg: '',
     password: '',
     confirmPassword: '',
@@ -20,10 +26,10 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your validation logic here
     if (validateForm()) {
-      // Perform form submission
       console.log('Form submitted:', formData);
+      // Navigate to the home page
+      navigate("Home");
     }
   };
 
@@ -32,8 +38,12 @@ const SignUp = () => {
     const requiredFieldsFilled =
       formData.username &&
       formData.email &&
+      formData.address &&
       formData.zip &&
       formData.hourlyRate &&
+      formData.make &&
+      formData.model &&
+      formData.year &&
       formData.carMpg &&
       formData.password &&
       formData.confirmPassword;
@@ -41,7 +51,13 @@ const SignUp = () => {
     // MPG validation (positive number)
     const validMpg = !isNaN(formData.carMpg) && parseFloat(formData.carMpg) > 0;
 
-    return requiredFieldsFilled && validMpg;
+    // Hourly rate validation (positive number)
+    const validHourlyRate = !isNaN(formData.hourlyRate) && parseFloat(formData.hourlyRate) > 0;
+
+    // Year validation (four-digit number)
+    const validYear = /^\d{4}$/.test(formData.year);
+
+    return requiredFieldsFilled && validMpg && validHourlyRate && validYear;
   };
 
   return (
@@ -51,6 +67,7 @@ const SignUp = () => {
         <div className="SignUp-form">
           <h2>Sign Up or Sign In to Get Started</h2>
           <form onSubmit={handleSubmit}>
+            {/* Your form inputs */}
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -69,6 +86,16 @@ const SignUp = () => {
               required
             />
 
+            
+          <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
+
             <label htmlFor="zip">ZIP Code</label>
             <input
               type="text"
@@ -78,6 +105,35 @@ const SignUp = () => {
               required
             />
 
+            <label htmlFor="make">Car Make</label>
+            <input
+              type="text"
+              id="make"
+              value={formData.make}
+              onChange={handleChange}
+              required
+            />
+
+            <label htmlFor="model">Car Model</label>
+            <input
+              type="text"
+              id="model"
+              value={formData.model}
+              onChange={handleChange}
+              required
+            />
+
+            <label htmlFor="year">Car Year</label>
+            <input
+              type="text"
+              id="year"
+              value={formData.year}
+              onChange={handleChange}
+              required
+              pattern="\d{4}" // Four-digit number
+            />
+            <small>Enter a valid four-digit year (e.g., 2022)</small>
+
             <label htmlFor="hourlyRate">How much you value your time ($/hr)</label>
             <input
               type="text"
@@ -85,6 +141,7 @@ const SignUp = () => {
               value={formData.hourlyRate}
               onChange={handleChange}
               required
+              pattern="\d+(\.\d{1,2})?"
             />
 
             <label htmlFor="carMpg">Car MPG</label>
@@ -115,7 +172,8 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-             <label htmlFor=""></label>
+
+            <label htmlFor=""></label>
             <button type="submit">Create Account</button>
           </form>
 
@@ -125,7 +183,7 @@ const SignUp = () => {
             <a href="/terms-of-service">Terms of Service</a>.
           </p>
           <p>
-            Already have an account? <Link to="../pages/Login.js">Sign in</Link>
+          Already have an account? <a onClick={() => navigate("Login")}>Sign in</a>
           </p>
         </div>
       </div>

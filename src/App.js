@@ -11,17 +11,24 @@ import { BuildingList } from './pages/BuildingList';
 import { ProductDetails } from './pages/ProductDetails';
 import { Compare } from './compare/Compare';
 import { Main } from './ShoppingList/Main';
+import UpdatePassword from './pages/UpdatePassword';
+
 import StoreSelector from './pages/StoreSelector';
 import Categories from './pages/Categories';
 
 function App() {
   return (
-    <div className="App">h
+    <div className="App">
       <Router>
         <Navbar />
         <Routes>
-        <Route path="/" exact Component={SignUp}/>
-          {/* <Route path="/Home" element={<Home />} /> */}
+          <Route path="/" exact Component={SignUp}/>
+           <Route path="/Login" Component={Login} /> 
+          <Route path="/Home" Component={Home} />  
+          <Route path="/UpdatePassword" Component={UpdatePassword} /> 
+          <Route path="/BuildingList" Component={BuildingList} /> 
+          <Route path="/StoreSelector" Component={StoreSelector} /> 
+          <Route path="/Categories" Component={Categories} />   
         </Routes>
       </Router>
       <Footer />
