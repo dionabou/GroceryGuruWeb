@@ -20,7 +20,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-        <Route path="/" exact Component={StoreSelector}/>
+        <Route path="/" exact Component={SignUp}/>
           {/* <Route path="/Home" element={<Home />} /> */}
         </Routes>
       </Router>
