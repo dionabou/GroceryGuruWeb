@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from React Router
 import "../styles/Categories.css";
 
 function Categories() {
@@ -59,6 +60,14 @@ function Categories() {
           )}
         </div>
       ))}
+
+      {/* Navigation buttons */}
+      <div>
+      <Link to="../pages/ProductDetails.jsx">
+    <button className="button">See Product Details</button>
+  </Link>
+  {/* Add more links for other pages */}
+      </div>
     </div>
   );
 }
