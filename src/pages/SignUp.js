@@ -176,7 +176,7 @@ const SignUp = () => {
             <label htmlFor=""></label>
             <button type="submit">Create Account</button>
           </form>
-
+ 
           <p>
             By signing up for a groceryguru account, you agree to our{' '}
             <a href="/privacy-policy">Privacy Policy</a> and{' '}

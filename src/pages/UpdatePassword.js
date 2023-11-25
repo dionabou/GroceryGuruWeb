@@ -57,7 +57,7 @@ function UpdatePassword() {
       valid = false;
     }
 
-    // Add more validation rules as needed
+    
 
     return valid;
   };
