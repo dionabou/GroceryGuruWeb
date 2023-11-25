@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/StoreSelector.css";
 
 function StoreSelector() {
@@ -15,7 +16,7 @@ function StoreSelector() {
   }
 
   return (
-    <div className="StoreSelector-container"> {/* Apply the style here */}
+    <div className="StoreSelector-container">
       <h2>Store Selector</h2>
       <label>
         <input
@@ -40,14 +41,23 @@ function StoreSelector() {
       <label>
         <input
           type="checkbox"
-          value="Meijer"
-          checked={selectedStores.includes('Meijer')}
-          onChange={() => handleStoreSelection('Meijer')}
+          value="Target"
+          checked={selectedStores.includes('Target')}
+          onChange={() => handleStoreSelection('Target')}
         />
-        Meijer
+        Target
       </label>
       <br />
       <p>Selected Stores: {selectedStores.join(', ')}</p>
+
+      {/* Navigation buttons */}
+<div>
+  <Link to="../pages/Categories.js">
+    <button className="button">See Categories</button>
+  </Link>
+  {/* Add more links for other pages */}
+</div>
+
     </div>
   );
 }
