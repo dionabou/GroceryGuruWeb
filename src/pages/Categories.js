@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link } from 'react-router-dom';
 import "../styles/Categories.css";
 
 function Categories() {
@@ -61,12 +61,12 @@ function Categories() {
         </div>
       ))}
 
-      {/* Navigation buttons */}
+      {/* Navigation button to the "Building List" page */}
       <div>
-      <Link to="../pages/ProductDetails.jsx">
-    <button className="button">See Product Details</button>
-  </Link>
-  {/* Add more links for other pages */}
+        <Link to="/BuildingList">
+          <button className="button">See Product Details</button>
+        </Link>
+        {/* Add more links for other pages */}
       </div>
     </div>
   );
