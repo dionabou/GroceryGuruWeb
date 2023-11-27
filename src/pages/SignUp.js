@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/SignUp.css';
-import '../pages/Home.js';
+import { addPosts } from '../api/Api.js';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -9,27 +9,75 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    zip: '',
-    hourlyRate: '',
+    streetAddress: '', 
+    zipcode: '',
+    userTimeValue: '',
     make: '',
     model: '',
     year: '',
-    carMpg: '',
+    mpg: '',
     password: '',
     confirmPassword: '',
   });
+
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [id]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Form submitted:', formData);
-      // Navigate to the home page
-      navigate("Home");
+      try {
+        const response = await addPosts(
+          formData.username,
+          formData.email,
+          formData.streetAddress, // Added missing field
+          formData.zipcode,
+          formData.userTimeValue,
+          formData.make,
+          formData.model,
+          formData.year,
+          formData.mpg,
+          formData.password,
+          formData.confirmPassword
+        );
+
+        console.log('User registered:', response);
+
+        // Reset form data
+        setFormData({
+          username: '',
+          email: '',
+          streetAddress: '',
+          zipcode: '',
+          userTimeValue: '',
+          make: '',
+          model: '',
+          year: '',
+          mpg: '',
+          password: '',
+          confirmPassword: '',
+        });
+
+        // Clear the error message
+        setError('');
+
+        // Navigate to the home page
+        navigate('Home');
+      } catch (error) {
+        console.error('Error registering user:', error);
+
+        // Display the error message to the user
+        setError('Registration failed. Please try again.');
+
+        // Clear the error message after a certain duration 
+        setTimeout(() => {
+          setError('');
+        }, 10000); 
+      }
     }
   };
 
@@ -38,26 +86,26 @@ const SignUp = () => {
     const requiredFieldsFilled =
       formData.username &&
       formData.email &&
-      formData.address &&
-      formData.zip &&
-      formData.hourlyRate &&
+      formData.streetAddress &&
+      formData.zipcode &&
+      formData.userTimeValue &&
       formData.make &&
       formData.model &&
       formData.year &&
-      formData.carMpg &&
+      formData.mpg &&
       formData.password &&
       formData.confirmPassword;
 
     // MPG validation (positive number)
-    const validMpg = !isNaN(formData.carMpg) && parseFloat(formData.carMpg) > 0;
+    const validmpg = !isNaN(formData.mpg) && parseFloat(formData.mpg) > 0;
 
     // Hourly rate validation (positive number)
-    const validHourlyRate = !isNaN(formData.hourlyRate) && parseFloat(formData.hourlyRate) > 0;
+    const validuserTimeValue = !isNaN(formData.userTimeValue) && parseFloat(formData.userTimeValue) > 0;
 
     // Year validation (four-digit number)
     const validYear = /^\d{4}$/.test(formData.year);
 
-    return requiredFieldsFilled && validMpg && validHourlyRate && validYear;
+    return requiredFieldsFilled && validmpg && validuserTimeValue && validYear;
   };
 
   return (
@@ -86,21 +134,20 @@ const SignUp = () => {
               required
             />
 
-            
-          <label htmlFor="address">Address</label>
+            <label htmlFor="streetAddress">Street Address</label>
             <input
               type="text"
-              id="address"
-              value={formData.address}
+              id="streetAddress"
+              value={formData.streetAddress}
               onChange={handleChange}
               required
             />
 
-            <label htmlFor="zip">ZIP Code</label>
+            <label htmlFor="zipcode">ZIP Code</label>
             <input
               type="text"
-              id="zip"
-              value={formData.zip}
+              id="zipcode"
+              value={formData.zipcode}
               onChange={handleChange}
               required
             />
@@ -134,26 +181,28 @@ const SignUp = () => {
             />
             <small>Enter a valid four-digit year (e.g., 2022)</small>
 
-            <label htmlFor="hourlyRate">How much you value your time ($/hr)</label>
+            
+            <label htmlFor="mpg">Car MPG</label>
             <input
               type="text"
-              id="hourlyRate"
-              value={formData.hourlyRate}
-              onChange={handleChange}
-              required
-              pattern="\d+(\.\d{1,2})?"
-            />
-
-            <label htmlFor="carMpg">Car MPG</label>
-            <input
-              type="text"
-              id="carMpg"
-              value={formData.carMpg}
+              id="mpg"
+              value={formData.mpg}
               onChange={handleChange}
               required
               pattern="\d+(\.\d{1,2})?" // Accepts positive numbers with up to 2 decimal places
             />
             <small>Enter a valid MPG (e.g., 25 or 30.5)</small>
+
+            <label htmlFor="userTimeValue">How much you value your time ($/hr)</label>
+            <input
+              type="text"
+              id="userTimeValue"
+              value={formData.userTimeValue}
+              onChange={handleChange}
+              required
+              pattern="\d+(\.\d{1,2})?"
+            />
+
 
             <label htmlFor="password">Password</label>
             <input
@@ -172,18 +221,27 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
-            <label htmlFor=""></label>
+            <label htmlFor=" "></label>
             <button type="submit">Create Account</button>
           </form>
- 
+
+          <div>
+    
+      <div className="SignUp-form">
+       
+        {error && <div className="error-message error-message-red">{error}</div>}
+       
+      </div>
+    </div>
+
+
           <p>
             By signing up for a groceryguru account, you agree to our{' '}
             <a href="/privacy-policy">Privacy Policy</a> and{' '}
             <a href="/terms-of-service">Terms of Service</a>.
           </p>
           <p>
-          Already have an account? <a onClick={() => navigate("Login")}>Sign in</a>
+            Already have an account? <a onClick={() => navigate("Login")}>Sign in</a>
           </p>
         </div>
       </div>
