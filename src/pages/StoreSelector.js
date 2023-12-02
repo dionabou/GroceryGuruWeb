@@ -14,11 +14,9 @@ function StoreSelector() {
 
   const handleStoreSelection = (store) => {
     if (selectedStores.includes(store)) {
-      // If the store is already selected, remove it
       setSelectedStores(selectedStores.filter(s => s !== store));
       setExpandedStore(null);
     } else {
-      // If the store is not selected, add it
       setSelectedStores([...selectedStores, store]);
       setExpandedStore(store);
     }
@@ -49,12 +47,15 @@ function StoreSelector() {
       ))}
       <p>Selected Stores: {selectedStores.join(', ')}</p>
 
-      {/* Navigation buttons */}
+
+      
+
+      {/* Navigation button to the "Categories" page */}
       <div>
-        <Link to="/categories">
+        <Link to="/Categories">
           <button className="button">See Categories</button>
         </Link>
-        {/* Add more links for other pages */}
+
       </div>
     </div>
   );

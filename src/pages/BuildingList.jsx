@@ -1,66 +1,100 @@
 import React from "react";
-
 import "../styles/BuildingList.css";
 
 export const BuildingList = () => {
+  // Sample store name and location (replace it with data)
+  const storeName = "Sample Store";
+  const storeLocation = "Sample Location";
+
+  const productsData = [
+    { id: 1, name: "", quantity: 2, price: 10, total: 20 },
+    { id: 2, name: "", quantity: 1, price: 15, total: 15 },
+    { id: 3, name: "", quantity: 1, price: 15, total: 15 },
+    { id: 4, name: "", quantity: 1, price: 15, total: 15 },
+    // Add more product data as needed
+  ];
+
+  const subtotal = "$50.00"; // Replace with data from database
+  const tax = "$5.00"; 
+  const gasCost = "$10.00"; 
+  const total = "$65.00"; 
+
+  const travelTime = "Travel Time";
+  const travelTimeValue = "2 hours"; 
+
   return (
     <div className="building-list">
+      <div className="text-shopping-list">Your Shopping List</div>
       <div className="div-2">
-        <div className="text-wrapper-3">Your Shopping List</div>
-        <div className="overlap">
-          <div className="user-created-block">
-            <div className="text-wrapper-4">Total</div>
-          
-            <div className="text-wrapper-6"><u>Travel Time:</u>26 minutes</div>
-            <div className="text-wrapper-7">2.00</div>
-            <div className="text-wrapper-8">Gas Cost</div>
-            <div className="text-wrapper-9">Tax</div>
-            <div className="text-wrapper-10">Subtotal</div>
-            <img className="chick" alt="Chick" src="chick-1.png" />
-            <div className="text-wrapper-11">1.79</div>
-            <img className="milk" alt="Milk" src="milk-1.png" />
-            <p className="heritage-farm">Heritage Farm® Boneless &amp; Skinless Chicken Breasts with Rib Meat</p>
-            <div className="text-wrapper-12">1</div>
-            <p className="p">Kroger® 2% Reduced Fat Milk</p>
-            <img className="egg" alt="Egg" src="../assets/milk.png" />
-            <div className="text-wrapper-13">3.98</div>
-            <div className="text-wrapper-14">1.99</div>
-            <p className="text-wrapper-15">Kroger® Grade A Large White Eggs</p>
-            <div className="text-wrapper-16">2</div>
-            <div className="text-wrapper-17">Qty</div>
-            <div className="text-wrapper-18">Total</div>
-            <div className="text-wrapper-19">Price</div>
-            <div className="text-wrapper-20">Product</div>
-           <div><p className="text-wrapper-21"><u>Location:</u> 123 Meadow Lane, Cincinnati, OH 45203</p></div> 
-            <div className="text-wrapper-21"><u>Store:</u> Kroger</div>
-            <div className="text-wrapper-23">1.79</div>
-            <div className="text-wrapper-24">1</div>
-            <div className="text-wrapper-25">1</div>
-            <div className="text-wrapper-26">14.14</div>
-            <div className="text-wrapper-27">1.37</div>
-            <div className="text-wrapper-28">1.37</div>
-            <div className="text-wrapper-29">14.14</div>
-            <img className="line" alt="Line" src="line-1.svg" />
-            <div className="text-wrapper-30">19.91</div>
-            <div className="text-wrapper-31">1.55</div>
-            <div className="text-wrapper-32">Broccoli Crowns</div>
-            <img className="broc" alt="Broc" src="broc-1.png" />
-            <div className="text-wrapper-33">23.46</div>
+        <div className="user-created-block">
+          {/* Store information at the top */}
+          <div className="store-info">
+            <label className="store-label"><u>Store:</u></label>
+            <label className="store-name">{storeName}</label>
+
+            {/* Location label and data */}
+            <label className="location-label"><u>Location:</u></label>
+            <label className="location-data">{storeLocation}</label>
           </div>
-          <div className="select-button">
-            <div className="overlap-group">
-              <div className="rectangle" />
-              <div className="text-wrapper-34">Optimize</div>
-            </div>
+
+          {/* Additional labels for Products, Qty, Price, and Total */}
+          <div className="shopping-list-header">
+            <label className="shopping-list-Products">Products</label>
+            <label className="shopping-list-Qty">Qty</label>
+            <label className="shopping-list-Price">Price</label>
+            <label className="shopping-list-Total">Total</label>
           </div>
-          <div className="overlap-wrapper">
-            <div className="overlap-group">
-              <div className="rectangle-2" />
-              <div className="text-wrapper-35">Shop with This List</div>
+
+          {/* Render containers based on the data */}
+          {productsData.map((product) => (
+            <div key={product.id} className="product-container">
+              <img src={`path/to/product/${product.id}.jpg`} alt={`Product ${product.id}`} />
+              <label>{product.name}</label>
+              <label>{product.quantity}</label>
+              <label>{product.price}</label>
+              <label>{product.total}</label>
             </div>
+          ))}
+
+          {/* Add a line after all the products */}
+          <hr />
+
+          {/* Label for Travel Time and its value */}
+          <div className="travel-time">
+            <label className="travel-time-label"><u>{travelTime}:</u></label>
+            <label className="travel-time-value">{travelTimeValue}</label>
+          </div>
+
+
+          {/* Financial information */}
+      <div className="financial-info">
+        <label>
+          <label className="financial-label">Subtotal:</label>
+          <label className="financial-value">{subtotal}</label>
+        </label>
+    <label>
+        <label className="financial-label">Tax:</label>
+        <label className="financial-value">{tax}</label>
+  </label>
+
+  <label>
+        <label className="financial-label">Gas Cost:</label>
+        <label className="financial-value">{gasCost}</label>
+  </label>
+
+  <label>
+        <label className="financial-label">Total:</label>
+        <label className="financial-value">{total}</label>
+        </label>
+      </div>
+
+
+          {/* Buttons at the bottom */}
+          <div className="button-container">
+            <button className="show-list-button">Show with this list</button>
+            <button className="optimize-button">Optimize</button>
           </div>
         </div>
-        <img className="vector" alt="Vector" src="vector-1.svg" />
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="contact-info">
-          <h3>Contact Us</h3>
+          <p><u>Contact Us</u></p>
           <p>Email: contact@groceryguru.com</p>
           <p>Phone: +1 (513) 456-7890</p>
           <p>Address: 123 Grocery St, Foodville</p>
