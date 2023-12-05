@@ -9,7 +9,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    streetAddress: '', 
+    streetAddress: '',
     zipcode: '',
     userTimeValue: '',
     make: '',
@@ -21,10 +21,22 @@ const SignUp = () => {
   });
 
   const [error, setError] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [validZipcode, setValidZipcode] = useState(true);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [id]: value }));
+
+    // Check if passwords match when the confirm password field changes
+    if (id === 'confirmPassword') {
+      setPasswordMatch(value === formData.password);
+    }
+
+    // Check if the entered ZIP code is part of the accepted list
+    if (id === 'zipcode') {
+      setValidZipcode(['45202','45203','45204','45205','45206','45207','45208','45209','45211','45212','45213','45214','45215','45216','45217','45218','45219','45220','45223','45224','45225','45226','45227','45229','45230','45231','45232','45233','45236','45237','45238','45239','45240','45241','45242','45243','45244','45245','45246','45247','45248','45249','45251','45252','45255'].includes(value));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -34,7 +46,7 @@ const SignUp = () => {
         const response = await addPosts(
           formData.username,
           formData.email,
-          formData.streetAddress, // Added missing field
+          formData.streetAddress,
           formData.zipcode,
           formData.userTimeValue,
           formData.make,
@@ -68,15 +80,9 @@ const SignUp = () => {
         // Navigate to the home page
         navigate('Home');
       } catch (error) {
-        console.error('Error registering user:', error);
+        console.error('', error);
+          setError(error.message);
 
-        // Display the error message to the user
-        setError('Registration failed. Please try again.');
-
-        // Clear the error message after a certain duration 
-        setTimeout(() => {
-          setError('');
-        }, 10000); 
       }
     }
   };
@@ -105,7 +111,10 @@ const SignUp = () => {
     // Year validation (four-digit number)
     const validYear = /^\d{4}$/.test(formData.year);
 
-    return requiredFieldsFilled && validmpg && validuserTimeValue && validYear;
+    // Zipcode validation (check if it's in the accepted list)
+    const validZipcode = ['45202','45203','45204','45205','45206','45207','45208','45209','45211','45212','45213','45214','45215','45216','45217','45218','45219','45220','45223','45224','45225','45226','45227','45229','45230','45231','45232','45233','45236','45237','45238','45239','45240','45241','45242','45243','45244','45245','45246','45247','45248','45249','45251','45252','45255'].includes(formData.zipcode);
+
+    return requiredFieldsFilled && validmpg && validuserTimeValue && validYear && validZipcode && passwordMatch && validZipcode;
   };
 
   return (
@@ -115,7 +124,6 @@ const SignUp = () => {
         <div className="SignUp-form">
           <h2>Sign Up or Sign In to Get Started</h2>
           <form onSubmit={handleSubmit}>
-            {/* Your form inputs */}
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -151,6 +159,7 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
+            {!validZipcode && <small className="error-message">Please enter a valid ZIP code</small>}
 
             <label htmlFor="make">Car Make</label>
             <input
@@ -177,11 +186,10 @@ const SignUp = () => {
               value={formData.year}
               onChange={handleChange}
               required
-              pattern="\d{4}" // Four-digit number
+              pattern="\d{4}"
             />
             <small>Enter a valid four-digit year (e.g., 2022)</small>
 
-            
             <label htmlFor="mpg">Car MPG</label>
             <input
               type="text"
@@ -189,7 +197,7 @@ const SignUp = () => {
               value={formData.mpg}
               onChange={handleChange}
               required
-              pattern="\d+(\.\d{1,2})?" // Accepts positive numbers with up to 2 decimal places
+              pattern="\d+(\.\d{1,2})?"
             />
             <small>Enter a valid MPG (e.g., 25 or 30.5)</small>
 
@@ -202,7 +210,6 @@ const SignUp = () => {
               required
               pattern="\d+(\.\d{1,2})?"
             />
-
 
             <label htmlFor="password">Password</label>
             <input
@@ -221,19 +228,16 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
+            {!passwordMatch && <small className="error-message">Passwords do not match</small>}
             <label htmlFor=" "></label>
             <button type="submit">Create Account</button>
           </form>
 
           <div>
-    
-      <div className="SignUp-form">
-       
-        {error && <div className="error-message error-message-red">{error}</div>}
-       
-      </div>
-    </div>
-
+            <div className="SignUp-form">
+              {error && <div className="error-message error-message-red">{error}</div>}
+            </div>
+          </div>
 
           <p>
             By signing up for a groceryguru account, you agree to our{' '}

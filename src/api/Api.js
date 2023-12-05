@@ -4,7 +4,7 @@ export const addPosts = async (
   username,
   email,
   streetAddress,
-  zip,
+  zipcode,
   userTimeValue,
   make,
   model,
@@ -22,14 +22,13 @@ export const addPosts = async (
         username,
         email,
         streetAddress,
-        zip,
+        zipcode,
         userTimeValue,
         make,
         model,
         year,
         mpg,
         password,
-        userId: Math.random().toString(36).slice(2),
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -37,7 +36,9 @@ export const addPosts = async (
     });
 
     if (!response.ok) {
-      throw new Error('Registration failed');
+      // If the response status is not ok, handle the error
+      const errorData = await response.json();
+      throw new Error(errorData.message);
     }
 
     const data = await response.json();
@@ -45,18 +46,21 @@ export const addPosts = async (
     // Assuming your response includes a 'token' property
     const { token, ...restData } = data;
 
-    // Set the token in your component's state
-    setToken(token);
+    // Set the token in localStorage
+    localStorage.setItem('token', token);
 
-    // Update the posts state
-    setPosts((posts) => [restData, ...posts]);
 
-    // Set the body state if needed
-    setBody('');
+    // setToken(token);
+
+    // // Update the posts state
+    // setPosts((posts) => [restData, ...posts]);
+
+ 
+    // setBody('');
 
     return data;
   } catch (error) {
-    console.error('Error in addPosts:', error);
+    console.error(error);
     throw error; // Rethrow the error for the calling function to handle
   }
 };
