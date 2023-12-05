@@ -1,18 +1,17 @@
-// Import necessary libraries and components
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
+import { addPosts } from '../api/ApiLog.js';
 
-// Define the Login component
 function Login() {
-  // Use the useNavigate hook to enable navigation
   const navigate = useNavigate();
 
-  // Define formData state and handleChange function
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -21,13 +20,31 @@ function Login() {
     });
   };
 
-  const handleSignInClick = () => {
-    // Access formData.username and formData.password as needed
-    navigate('/Home');
+  const handleSignInClick = async () => {
+    try {
+      const response = await addPosts(formData.username, formData.password);
+
+      console.log('User logged in:', response);
+
+      // Reset form data
+      setFormData({
+        username: '',
+        password: '',
+      });
+
+      // Clear the error message
+      setError('');
+
+      // Navigate to the home page
+      navigate('/Home');
+    } catch (error) {
+      console.error('', error);
+      setError(error.message);
+    }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents the default form submission
+    e.preventDefault();
     // You can add your validation logic here before calling handleSignInClick
     if (validateForm()) {
       handleSignInClick();
@@ -36,13 +53,12 @@ function Login() {
 
   const validateForm = () => {
     // Implement your validation logic here
-    // For example, check if the username and password meet your criteria
     return formData.username.trim() !== '' && formData.password.trim() !== '';
   };
 
   return (
     <div className="login-container">
-      <h1 className="page-title">Welcome to Groceryguru</h1>
+      <h1 className="page-title">Welcome Back to Groceryguru</h1>
 
       <div className="login-form">
         <h2>Sign In</h2>
@@ -67,8 +83,11 @@ function Login() {
               required
             />
           </div>
+          {error && <div className="error-message error-message-red">{error}</div>}
           <div className="button-container">
-            <button type="submit" className="signin-button"> Sign In </button>
+            <button type="submit" className="signin-button">
+              Sign In
+            </button>
           </div>
           <div className="forgot-password">
             <Link to="/UpdatePassword">Forgot Password</Link>
