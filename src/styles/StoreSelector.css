@@ -1,0 +1,79 @@
+/* StoreSelector.css */
+
+/* Styles for the title "Store Selector" */
+.page-title {
+    font-family: 'Algerian', sans-serif; /* Apply Algerian font */
+    font-size: 48px; /* Increase font size to make it bigger */
+    margin-bottom: 20px; /* Add margin at the bottom of the title */
+    text-align: center; /* Center the text horizontally */
+}
+
+/* Container styles - Apply styles similar to Categories container */
+.StoreSelector-container {
+    max-width: 800px; /* Increase the max-width for a wider container */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Set the background color to white */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Align text to the left */
+}
+
+/* Heading styles */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styles */
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: darkblue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+/* Paragraph styles */
+p {
+    font-size: 16px;
+    margin-top: 20px;
+    color: black;
+}
+
+/* Link styles */
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
