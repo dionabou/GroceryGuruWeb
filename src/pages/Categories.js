@@ -1,8 +1,33 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import "../styles/Categories.css";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 function Categories() {
+  // Get the storeId from the URL parameters
+  const { store: storeId } = useParams();
+
+  const [categoryData, setCategoryData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Use the storeId directly in the URL
+        const response = await fetch(`http://localhost:8080/api/categories/?companyStoreId=${storeId}`);
+
+        if (!response.ok) {
+          console.error('Failed to fetch categories. Status:', response.status);
+          return;
+        }
+
+        const data = await response.json();
+        setCategoryData(data);
+      } catch (error) {
+        console.error('Error fetching categories:', error.message);
+      }
+    };
+
+    fetchData();
+  }, [storeId]); // Include storeId as a dependency
+
   const mainCategories = ['Dairy', 'Meat', 'Paper Products', 'Fruits', 'Vegetables'];
 
   const subcategories = {
@@ -37,7 +62,7 @@ function Categories() {
 
   return (
     <div className="container">
-      <h2>Categories</h2>
+      <h2>Categories for Store ID: {storeId}</h2>
       {mainCategories.map((category) => (
         <div key={category}>
           <h3 onClick={() => handleCategoryClick(category)}>{category}</h3>
@@ -63,9 +88,10 @@ function Categories() {
 
       {/* Navigation button to the "Building List" page */}
       <div>
-        <Link to="/BuildingList">
+        {/* Adjust the link based on your routing */}
+        <a href="/BuildingList">
           <button className="button">See Product Details</button>
-        </Link>
+        </a>
         {/* Add more links for other pages */}
       </div>
     </div>
