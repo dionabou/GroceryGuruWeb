@@ -2,98 +2,121 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 function Categories() {
-  // Get the storeId from the URL parameters
-  const { store: storeId } = useParams();
+  const { addressId } = useParams();
 
   const [categoryData, setCategoryData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Use the storeId directly in the URL
-        const response = await fetch(`http://localhost:8080/api/categories/?companyStoreId=${storeId}`);
+        setLoading(true);
+        const response = await fetch(`http://localhost:8080/api/categories/?companyStoreId=${addressId}`);
 
         if (!response.ok) {
           console.error('Failed to fetch categories. Status:', response.status);
+          setError('Failed to fetch categories. Please try again later.');
           return;
         }
 
         const data = await response.json();
-        setCategoryData(data);
+
+        if (Array.isArray(data)) {
+          setCategoryData(data);
+        } else {
+          console.error('Invalid or missing categories in the API response:', data);
+          setError('Invalid or missing categories in the API response.');
+        }
       } catch (error) {
         console.error('Error fetching categories:', error.message);
+        setError('Error fetching categories. Please try again later.');
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [storeId]); // Include storeId as a dependency
+  }, [addressId]);
 
-  const mainCategories = ['Dairy', 'Meat', 'Paper Products', 'Fruits', 'Vegetables'];
+  const categorizeProduct = (product) => {
+    const name = product.name.toLowerCase();
 
-  const subcategories = {
-    Dairy: ['Eggs', 'Milk'],
-    Meat: ['Beef', 'Chicken'],
-    'Paper Products': ['Toilet Paper', 'Paper Towels'],
-    Fruits: ['Apples', 'Bananas'],
-    Vegetables: ['Potatoes', 'Onions', 'Lettuce', 'Tomatoes'],
+    if (name.includes('milk') || name.includes('egg')) {
+      return 'Dairy';
+    } else if (name.includes('beef') || name.includes('chicken')) {
+      return 'Meat';
+    } else if (name.includes('toilet paper') || name.includes('paper towel')) {
+      return 'Paper Products';
+    } else if (name.includes('potato') || name.includes('onion') || name.includes('lettuce') || name.includes('tomato')) {
+      return 'Vegetables';
+    } else if (name.includes('apple') || name.includes('banana')) {
+      return 'Fruit';
+    }
+
+    return 'Others';
   };
-
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedSubcategories, setSelectedSubcategories] = useState([]);
 
   const handleCategoryClick = (category) => {
-    if (selectedCategory === category) {
-      setSelectedCategory(null);
-    } else {
-      setSelectedCategory(category);
-    }
-    setSelectedSubcategories([]); // Clear selected subcategories when a new main category is clicked
+    setSelectedCategory(category);
   };
 
-  const handleCheckboxChange = (subcategory) => {
-    setSelectedSubcategories((prevSelected) => {
-      if (prevSelected.includes(subcategory)) {
-        return prevSelected.filter((item) => item !== subcategory);
-      } else {
-        return [...prevSelected, subcategory];
-      }
-    });
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  const organizedCategories = {
+    Dairy: ['milk', 'eggs'],
+    Meat: ['beef', 'chicken'],
+    'Paper Products': ['toilet paper', 'paper towels'],
+    Vegetables: ['potatoes', 'onions', 'lettuce', 'tomatoes'],
+    Fruit: ['apples', 'bananas'],
+    Others: [],
   };
+
+  categoryData.forEach((cat) => {
+    const category = categorizeProduct(cat.productList[0]);
+    if (organizedCategories[category]) {
+      organizedCategories[category].push(cat.category.toLowerCase());
+    } else {
+      organizedCategories['Others'].push(cat.category.toLowerCase());
+    }
+  });
 
   return (
     <div className="container">
-      <h2>Categories for Store ID: {storeId}</h2>
-      {mainCategories.map((category) => (
-        <div key={category}>
-          <h3 onClick={() => handleCategoryClick(category)}>{category}</h3>
-          {selectedCategory === category && (
-            <ul>
-              {subcategories[category].map((subcategory) => (
-                <li key={subcategory}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      value={subcategory}
-                      checked={selectedSubcategories.includes(subcategory)}
-                      onChange={() => handleCheckboxChange(subcategory)}
-                    />
-                    {subcategory}
-                  </label>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
-
-      {/* Navigation button to the "Building List" page */}
-      <div>
-        {/* Adjust the link based on your routing */}
-        <a href="/BuildingList">
-          <button className="button">See Product Details</button>
-        </a>
-        {/* Add more links for other pages */}
-      </div>
+      <h2>Categories for Address ID: {addressId}</h2>
+      <ul>
+        {Object.entries(organizedCategories).map(([category, products]) => (
+          <li key={category}>
+            <h3 onClick={() => handleCategoryClick(category)}>{category}</h3>
+            {selectedCategory === category && (
+              <ul>
+                {categoryData
+                  .filter((cat) => products.includes(cat.category.toLowerCase()))
+                  .flatMap((cat) =>
+                    cat.productList.map((product) => (
+                      <li key={product.id}>
+                        <div>
+                          <p>Name: {product.name}</p>
+                          <p>Description: {product.description}</p>
+                          <p>Price: {product.price}</p>
+                          <p>Aisle Location: {product.aisleLocation}</p>
+                          <img src={product.imageUrl} alt={product.name} />
+                        </div>
+                      </li>
+                    ))
+                  )}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
