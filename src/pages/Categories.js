@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import '../styles/Categories.css';
 function Categories() {
   const { addressId } = useParams();
 
   const [categoryData, setCategoryData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState({
+    
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -40,26 +43,28 @@ function Categories() {
     fetchData();
   }, [addressId]);
 
-  const categorizeProduct = (product) => {
-    const name = product.name.toLowerCase();
-
-    if (name.includes('milk') || name.includes('egg')) {
+  const categorizeProduct = (category) => {
+    if (category.includes('milk') || category.includes('egg')) {
       return 'Dairy';
-    } else if (name.includes('beef') || name.includes('chicken')) {
+    } else if (category.includes('beef') || category.includes('chicken')) {
       return 'Meat';
-    } else if (name.includes('toilet paper') || name.includes('paper towel')) {
+    } else if (category.includes('toilet paper') || category.includes('paper towel')) {
       return 'Paper Products';
-    } else if (name.includes('potato') || name.includes('onion') || name.includes('lettuce') || name.includes('tomato')) {
+    } else if (category.includes('potato') || category.includes('onion') || category.includes('lettuce') || category.includes('tomato')) {
       return 'Vegetables';
-    } else if (name.includes('apple') || name.includes('banana')) {
+    } else if (category.includes('apple') || category.includes('banana')) {
       return 'Fruit';
     }
 
-    return 'Others';
+    return null; // Returning null for products that don't fit into any category
   };
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+  };
+
+  const handleCheckboxChange = (checkbox) => {
+    setSelectedCheckboxes((prevCheckboxes) => ({ ...prevCheckboxes, [checkbox]: !prevCheckboxes[checkbox] }));
   };
 
   if (loading) {
@@ -76,17 +81,15 @@ function Categories() {
     'Paper Products': ['toilet paper', 'paper towels'],
     Vegetables: ['potatoes', 'onions', 'lettuce', 'tomatoes'],
     Fruit: ['apples', 'bananas'],
-    Others: [],
   };
 
-  categoryData.forEach((cat) => {
-    const category = categorizeProduct(cat.productList[0]);
-    if (organizedCategories[category]) {
-      organizedCategories[category].push(cat.category.toLowerCase());
-    } else {
-      organizedCategories['Others'].push(cat.category.toLowerCase());
-    }
-  });
+  const categoryTags = {
+    Dairy: ['milk', '1%', '2%', 'skim', 'whole', 'organic', 'gal', 'quart', 'qt', 'lactose free', 'eggs', 'grade a', 'white', 'brown', 'large', 'extra large', 'cage free', 'jumbo', 'medium', 'free range', 'organic eggs'],
+    Meat: ['beef', 'ground', 'chuck', 'lean', 'angus', 'roast', 'hamburger', 'burger', 'goetta', 'shaved', 'steak', 'cubed', 'new york strip', 'sirloin', 'top round', 'ribeye', ' bottom round', 'flank', 'filet mignon', 'tenderloin','grass fed', 'chicken', 'boneless', 'bone-in', 'wing', 'drumstick', 'breast', 'skinless', 'skin-on', 'tenderloin', 'thigh', 'organic', 'tender', 'whole', 'strip', 'gizzard', 'heart', 'leg'],
+    'Paper Products': ['toilet paper', 'regular roll', 'double roll', 'mega roll', '1 ply', '2 ply', '3 ply', 'scented', 'recycled', 'rv', 'marine', 'paper towels', 'double roll', 'double plus roll', 'giant roll', 'big roll', 'select-a-size', 'pick-a-size', 'tear-a-square'],
+    Fruit: ['apples', 'honeycrisp', 'gala' , 'pink lady', 'granny smith', 'organic', 'fuji', 'sweettango', 'cosmic crisp', 'opal', 'envy', 'red delicious', 'golden delicious', 'ambrosia', 'cortland',   'bananas', 'organic', 'plantain'],
+    Vegetables: ['potatoes', 'russet', 'jumbo', 'petite', 'gol', 'yukon gold', 'idaho', 'red', 'sweet', 'organic', 'fingerling', 'gourmet', 'onions', 'sweet', 'jumbo', 'yellow', 'medium', 'white', 'red', 'green', 'organic', 'peruvian', 'gold', 'peeled', 'diced', 'lettuce', 'iceberg', 'shredded', 'romaine', 'heart', 'green', 'leaf', 'organic', 'living', 'butter', 'red', 'baby', 'boston', 'tomatoes', 'red', 'on the vine', 'petite', 'medley', 'snacking', 'roma', 'large', 'beefsteak', 'grape', 'cherry', 'salad', 'campari', 'vine ripe', 'organic', 'heirloom', 'orange'],
+  };
 
   return (
     <div className="container">
@@ -96,23 +99,44 @@ function Categories() {
           <li key={category}>
             <h3 onClick={() => handleCategoryClick(category)}>{category}</h3>
             {selectedCategory === category && (
-              <ul>
-                {categoryData
-                  .filter((cat) => products.includes(cat.category.toLowerCase()))
-                  .flatMap((cat) =>
-                    cat.productList.map((product) => (
-                      <li key={product.id}>
-                        <div>
-                          <p>Name: {product.name}</p>
-                          <p>Description: {product.description}</p>
-                          <p>Price: {product.price}</p>
-                          <p>Aisle Location: {product.aisleLocation}</p>
-                          <img src={product.imageUrl} alt={product.name} />
-                        </div>
-                      </li>
-                    ))
-                  )}
-              </ul>
+              <div>
+                {/* Filter buttons for the selected category */}
+                {categoryTags[category].map(tag => (
+                  <button
+                    key={tag}
+                    onClick={() => handleCheckboxChange(tag)}
+                    className={selectedCheckboxes[tag] ? 'active' : ''}
+                  >
+                    {tag}
+                  </button>
+                ))}
+                {/* Product list */}
+                <ul>
+                  {categoryData
+                    .filter((cat) => products.includes(cat.category.toLowerCase()))
+                    .flatMap((cat) =>
+                      cat.productList
+                        .filter((product) => {
+                          // Check if any selected checkbox matches the product's name or description
+                          return Object.entries(selectedCheckboxes).some(
+                            ([checkbox, isChecked]) =>
+                              isChecked &&
+                              (product.name.toLowerCase().includes(checkbox) ||
+                                product.description.toLowerCase().includes(checkbox))
+                          );
+                        })
+                        .map((product) => (
+                          <li key={product.id}>
+                            <div>
+                              <p>Name: {product.name}</p>
+                              <p>Price: {product.price}</p>
+                              <img src={product.imageUrl} alt={product.name} />
+                            </div>
+                          </li>
+                        ))
+                    )}
+                </ul>
+              </div>
             )}
           </li>
         ))}
