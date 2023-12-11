@@ -32,7 +32,7 @@ function UpdatePassword() {
   const handleUpdatePasswordClick = () => {
     if (validateForm()) {
       // Perform password update logic here
-      navigate('/Login'); // Navigate to the SignUp page after updating the password
+      navigate('/login'); // Navigate to the SignUp page after updating the password
     }
   };
 

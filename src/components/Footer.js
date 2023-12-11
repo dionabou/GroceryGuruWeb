@@ -28,10 +28,10 @@ function Footer() {
             <FontAwesomeIcon icon={faTwitter} />
           </a>
           <a href="https://www.instagram.com">
-            <FontAwesomeIcon icon={faInstagram}  style={{ color: '#c13584' }}/>
+            <FontAwesomeIcon icon={faInstagram} style={{ color: '#c13584' }} />
           </a>
           <a href="https://www.linkedin.com">
-            <FontAwesomeIcon icon={faLinkedin} style={{ color: '#0077b5' }}/>
+            <FontAwesomeIcon icon={faLinkedin} style={{ color: '#0077b5' }} />
           </a>
         </div>
       </div>
