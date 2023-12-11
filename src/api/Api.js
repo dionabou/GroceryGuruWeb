@@ -55,7 +55,6 @@ export const addPosts = async (
     // // Update the posts state
     // setPosts((posts) => [restData, ...posts]);
 
- 
     // setBody('');
 
     return data;

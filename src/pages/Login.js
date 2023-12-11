@@ -36,7 +36,7 @@ function Login() {
       setError('');
 
       // Navigate to the home page
-      navigate('/Home');
+      navigate('/home');
     } catch (error) {
       console.error('', error);
       setError(error.message);
@@ -59,7 +59,6 @@ function Login() {
   return (
     <div className="login-container">
       <h1 className="page-title">Welcome Back to Groceryguru</h1>
-
       <div className="login-form">
         <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
@@ -90,7 +89,7 @@ function Login() {
             </button>
           </div>
           <div className="forgot-password">
-            <Link to="/UpdatePassword">Forgot Password</Link>
+            <Link to="/update_password">Forgot Password</Link>
           </div>
         </form>
       </div>

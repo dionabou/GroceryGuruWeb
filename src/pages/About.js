@@ -50,7 +50,7 @@ const About = () => {
         to smarter, more cost-effective, and time-saving grocery shopping!
       </p>
 
-      <Link to="/Home" className="cta-button">Home Page</Link>
+      <Link to="/home" className="cta-button">Home Page</Link>
     </div>
   );
 };

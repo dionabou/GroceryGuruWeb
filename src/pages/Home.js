@@ -11,8 +11,8 @@ const Home = () => {
         <Link to="/trip-history">Trip History</Link>
         <Link to="/favorites">Favorites</Link>
         <Link to="/profile">Profile</Link>
-        <Link to="/About">About</Link>
-        <Link to="/Logout">Log Out</Link>
+        <Link to="/about">About</Link>
+        <Link to="/logout">Log Out</Link>
       </nav>
 
       <div className="home-container">
@@ -23,19 +23,17 @@ const Home = () => {
 
         <section className="home-intro">
           <p>
-          Embark on a smarter, more efficient grocery shopping journey with us! At GroceryGuru, 
-          we're dedicated to revolutionizing the way you shop for groceries, putting the power of optimization right at your fingertips.
+            Embark on a smarter, more efficient grocery shopping journey with us! At GroceryGuru,
+            we're dedicated to revolutionizing the way you shop for groceries, putting the power of optimization right at your fingertips.
             Navigate the aisles effortlessly by factoring in store prices,
             distances, gas costs, and your precious time. Our platform empowers you to make informed
             choices, ensuring you discover the best places to buy groceries while saving both time
             and money.
           </p>
-          <Link to="/StoreSelector" className="cta-button">Start Your Trip</Link>
+          <Link to="/store_selector" className="cta-button">Start Your Trip</Link>
         </section>
       </div>
-      
     </div>
-    
   );
 };
 
