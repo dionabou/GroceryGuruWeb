@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/Categories.css";
+import ProductDetails from './ProductDetails';
 
 function Categories() {
   const mainCategories = ['Dairy', 'Meat', 'Paper Products', 'Fruits', 'Vegetables'];
@@ -63,7 +64,7 @@ function Categories() {
 
       {/* Navigation button to the "Building List" page */}
       <div>
-        <Link to="/BuildingList">
+        <Link to={`/ProductDetails/${ProductDetails.companyStoreProductId}`}>
           <button className="button">See Product Details</button>
         </Link>
         {/* Add more links for other pages */}

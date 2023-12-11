@@ -1,29 +1,67 @@
 // ProductDetails.js
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
 import "../styles/ProductDetails.css";
+
+// Function to capitalize the first letter of a string
+const capitalizeFirstLetter = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
 
 const ProductDetails = () => {
   const navigate = useNavigate();
-  const { productId } = useParams();
+  const { companyStoreProductId } = useParams();
   const [product, setProduct] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const token = localStorage.getItem("token");
 
-  const fetchProductData = async (productId) => {
-    // API call
-    const response = await fetch('http://localhost:8080/api/products/1');
-    const data = await response.json();
-    return data;
+
+  const fetchProductData = async (companyStoreProductId) => {
+    try {
+      // API call with custom headers
+      const response = await fetch(`http://localhost:8080/api/products/${companyStoreProductId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+      });
+  
+      // Log the response 
+      console.log('API Response:', response);
+  
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+  
+      // Check if the response body is empty
+      const text = await response.text();
+      if (!text.trim()) {
+        console.warn('Empty response received.');
+        return null;
+      }
+  
+      // Parse JSON only if the response is not empty
+      const data = JSON.parse(text);
+      return data;
+    } catch (error) {
+      console.error('Error fetching product data:', error.message);
+      throw error; // Rethrow the error to indicate the failure
+    }
   };
-
+  
   useEffect(() => {
     // Fetch product data when component mounts
     const fetchData = async () => {
-      const productData = await fetchProductData(productId);
+      const productData = await fetchProductData(companyStoreProductId);
       setProduct(productData);
     };
 
     fetchData();
-  }, [productId]);
+  }, [companyStoreProductId]);
+  
 
   const handleGoBack = () => {
     //  logic for going back
@@ -32,27 +70,66 @@ const ProductDetails = () => {
     navigate("/Categories");
   };
 
-  const handleAddToList = () => {
-    //  logic for adding to the list
-    console.log("Add to List", product);
-   
+  const handleAddToList = async () => {
+    try {
+      // Ensure there is a valid product and quantity
+      if (!product || quantity <= 0) {
+        console.error('Invalid product or quantity.');
+        return;
+      }
+  
+      // Define the data to be sent in the POST request
+      const postData = {
+        companyStoreProductId: product.id,
+        quantity: quantity,
+      };
+  
+      // Make the POST request
+      const response = await fetch('http://localhost:8080/api/shoppinglist/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token} `
+        },
+        body: JSON.stringify(postData),
+      });
+  
+      // Log the response
+      console.log('Add to List Response:', response);
+  
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+  
+      // Handle the success case
+      console.log('Product added to the list successfully!');
+  
+      // Navigate to the Categories page
+      navigate('/Categories');
+    } catch (error) {
+      console.error('Error adding product to the list:', error.message);
+    }
+  };
+  
+
+  const handleToggleFavorite = () => {
+    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
 
-  const handleContinueShopping = () => {
-    // Implement logic for continuing shopping
-    console.log("Continue Shopping");
-  
-    navigate("/Categories");
-  };
+  const [quantity, setQuantity] = useState(1); // Initialize quantity state with 1
 
   const handleQuantityChange = (value) => {
-  
-    console.log(`Quantity changed to ${value}`);
-   
+    // Ensure the quantity doesn't go below 1
+    const newQuantity = Math.max(quantity + value, 1);
+    setQuantity(newQuantity);
   };
 
   return (
+    
+    <div class="details-container">
+   <h1 className="paged-title">Product Details</h1>
     <div className="product-details">
+      
       {/* Go Back Button */}
       <div className="back-button">
         <button className="go-back" onClick={handleGoBack}>
@@ -62,7 +139,13 @@ const ProductDetails = () => {
 
      
       <div className="image-container">
-        <img className="image" alt="Product" src={product?.image} />
+        {/* Display the image if available, otherwise show a placeholder */}
+        {product ? (
+          <img className="image" alt="Product" src={product.imageUrl} />
+
+          ) : (
+          <p>Loading...</p>
+        )}
       </div>
 
       {/* Product Details on the right */}
@@ -71,55 +154,70 @@ const ProductDetails = () => {
           {/* Dynamic product details */}
           {product ? (
             <>
-              {product.name}
+            
+            
+            <br />
+            <u><b>Product Name:</b></u> {capitalizeFirstLetter(product.name)}
+             
+              <br />
+              {product.details && (
+              <>
+              <u><b>Description:</b></u> {product.description}
+              <br />
+              </>
+              )}
+
+              <br />
+              <u><b>Location:</b></u> {product.aisleLocation}
               <br />
               <br />
-              UPC: {product.upc}
-              <br />
-              <br />
-              Size: {product.size}
-              <br />
-              <br />
-              {product.details}
-              <br />
-              <br />
-              Located in {product.category}
-              <br />
-              <br />
-              
-              <br />
-              <br />
-              ${product.price} per unit
+              <u><b>Price:</b></u> ${product.price} per unit
             </>
           ) : (
             "Loading..."
           )}
         </p>
 
-        {/* Quantity Box */}
-        <div className="quantity-box">
-          <div className="decrement" onClick={() => handleQuantityChange(-1)}>
-            -
+       {/* Quantity Input Box with Label */}
+       <div className="quantity-box">
+            <label htmlFor="quantity" className="quantity-label">
+            <u> <b> Quantity: </b> </u>
+            </label>
+            <input
+              type="number"
+              id="quantity"
+              className="quantity"
+              value={quantity}
+              onChange={(e) => {
+                const newValue = parseInt(e.target.value, 10) || 1;
+                setQuantity(newValue);
+              }}
+            />
           </div>
-          <div className="quantity">1</div> {/* Replace with dynamic value */}
-          <div className="increment" onClick={() => handleQuantityChange(1)}>
-            +
-          </div>
-        </div>
 
         {/* Continue Shopping and Add to List Buttons */}
         <div className="button-container">
-          {/* Continue Shopping Button */}
-          <button className="continue-shopping" onClick={handleContinueShopping}>
-            Continue Shopping
-          </button>
 
           {/* Add to List Button */}
           <button className="add-to-list" onClick={handleAddToList}>
             Add to List
           </button>
         </div>
+
+
+        {/* Add to Favorites Icon */}
+      <div className="button-container">
+        <button
+          className={`add-to-favorites ${isFavorite ? "favorited" : ""}`}
+          onClick={handleToggleFavorite}
+        >
+          <FontAwesomeIcon icon={faHeart} />
+          {isFavorite ? " Remove from Favorites" : " Add to Favorites"}
+        </button>
       </div>
+      
+      </div>
+    </div>
     </div>
   );
 };

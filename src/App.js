@@ -21,7 +21,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" exact Component={ProductDetails}/>
+          <Route path="/" exact Component={SignUp}/>
            <Route path="/Login" Component={Login} /> 
           <Route path="/Home" Component={Home} />  
           <Route path="/UpdatePassword" Component={UpdatePassword} /> 
@@ -29,6 +29,7 @@ function App() {
           <Route path="/StoreSelector" Component={StoreSelector} /> 
           <Route path="/Categories" Component={Categories} />   
           <Route path="/About" Component={About} />   
+          <Route path="/ProductDetails/:companyStoreProductId" Component={ProductDetails} />  
         </Routes>
       </Router>
       <label htmlFor=""></label>

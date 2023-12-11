@@ -1,4 +1,4 @@
-// api.js
+// apilog.js
 
 export const addPosts = async (
     username,

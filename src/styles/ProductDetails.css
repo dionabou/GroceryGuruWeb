@@ -9,13 +9,13 @@
 
 .image-container {
   margin-top: 100px;
-  width: 290px;
-  height: 400px;
+  width: 250px;
+ 
 
 }
 
 .image {
-  height: auto;
+  height: 200px;
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,14 +32,15 @@
 .product-details .back-button {
   margin-top: 20px;
   margin-left: 20px;
+  width: 200px;
 }
 
 .product-details .go-back {
-  background-color: #3498db;
+  background-color: darkblue;
   color: #ffffff;
   font-family: "Lato-ExtraBold", Helvetica, sans-serif;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 100;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -102,7 +103,7 @@
 /* Switched positions of Continue Shopping and Add to List buttons */
 .product-details .add-to-list,
 .product-details .continue-shopping {
-  background-color: #3498db;
+  background-color: darkblue;
   color: #ffffff;
   font-family: "Lato-ExtraBold", Helvetica, sans-serif;
   font-size: 16px;
@@ -117,4 +118,55 @@
 .product-details .add-to-list:hover,
 .product-details .continue-shopping:hover {
   background-color: #2980b9;
+}
+
+.details-container {
+  max-width: 800px; /* Adjust the maximum width as needed */
+  margin: 0 auto;   /* Center the container */
+  border-radius: 100px;
+}
+
+
+.paged-title {
+  font-family: 'Algerian', sans-serif; /* Apply Algerian font */
+  font-size: 48px; /* Increase font size to make it bigger */
+  margin-top: 5px; /* Add margin at the bottom of the title */
+  margin-bottom: 5px;
+  text-align: center; /* Center the text horizontally */
+  margin-left: 159px;
+}
+
+
+.product-details .quantity-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.product-details .quantity {
+  font-family: "Lato-ExtraBold", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  width: 60px; /* Adjust the width as needed */
+  margin: 0 10px; /* Add margin to separate from the buttons */
+}
+
+.quantity-box .quantity-label {
+  color: #333333;
+  font-family: "Inter-Regular", Helvetica, sans-serif;
+  font-size: 18px;
+  margin-left: 58px;
+}
+
+/* Add to Favorites Button */
+.add-to-favorites {
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  color: whitesmoke; /* Color for the empty heart */
+}
+
+.add-to-favorites.favorited {
+  color: red; /* Color for the filled heart */
 }
