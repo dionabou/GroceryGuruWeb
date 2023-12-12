@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { BuildingList } from './pages/BuildingList';
 import Home from './pages/Home';
 import Login from './pages/Login';
-// import Logout from './pages/Logout';
 import { ProductDetails } from './pages/ProductDetails';
 import SignUp from './pages/SignUp';
 import UpdatePassword from './pages/UpdatePassword';
@@ -14,11 +13,10 @@ import { Compare } from './compare/Compare';
 import Categories from './pages/Categories';
 import About from './pages/About';
 import StoreSelector from './pages/StoreSelector';
-import SignUp from './pages/SignUp';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import UpdatePassword from './pages/UpdatePassword';
-import { BuildingList } from './pages/BuildingList';
+
+
+
+
 
 function App() {
   return (
@@ -31,7 +29,6 @@ function App() {
           <Route path="/login" Component={Login} />
           <Route path="/home" Component={Home} />
           <Route path="/update_password" Component={UpdatePassword} />
-          <Route path="/Storeselector" element={<StoreSelector />} />
           <Route path="/building_list" Component={BuildingList} />
           <Route path="/store_selector" Component={StoreSelector} />
           <Route path="/about" Component={About} />
