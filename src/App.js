@@ -31,6 +31,7 @@ function App() {
           <Route path="/About" Component={About} />   
           <Route path="/ProductDetails/:companyStoreProductId" Component={ProductDetails} />  
           <Route path="/Compare" Component={Compare} />   
+          <Route path="/Main" Component={Main} />   
         </Routes>
       </Router>
       <label htmlFor=""></label>
