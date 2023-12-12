@@ -2,14 +2,21 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import StoreSelector from './pages/StoreSelector';
+import { BuildingList } from './pages/BuildingList';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import { ProductDetails } from './pages/ProductDetails';
+import SignUp from './pages/SignUp';
+import UpdatePassword from './pages/UpdatePassword';
+import { Main } from './ShoppingList/Main';
+import { Compare } from './compare/Compare';
 import Categories from './pages/Categories';
 import About from './pages/About';
-import SignUp from './pages/SignUp';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import UpdatePassword from './pages/UpdatePassword';
-import { BuildingList } from './pages/BuildingList';
+import StoreSelector from './pages/StoreSelector';
+
+
+
+
 
 function App() {
   return (
@@ -27,9 +34,6 @@ function App() {
           <Route path="/about" Component={About} />
         </Routes>
       </Router>
-      <label htmlFor=""></label>
-      <label htmlFor=""></label>
-      <label htmlFor=""></label>
       <Footer />
     </div>
   );

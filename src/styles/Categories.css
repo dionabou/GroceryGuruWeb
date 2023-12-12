@@ -2,77 +2,117 @@
 
 /* Container styles */
 .container {
-    max-width: 800px; /* Increase the max-width for a wider container */
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Heading styles */
 h2 {
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 20px;
     color: #333;
 }
 
 h3 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 10px;
     color: #333;
-    cursor: pointer; /* Add cursor pointer for better UX */
-    text-align: left; /* Move categories heading to the left */
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
 }
 
 /* List styles */
 ul {
     list-style-type: none;
     padding: 0;
-    margin-left: 0; /* Move the categories list to the left */
-    padding-left: 0;
+    margin: 0;
 }
 
 li {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
-/* Categories.css */
 
-/* Container styles */
-.container {
-    max-width: 800px; /* Increase the max-width for a wider container */
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
+/* Filter button styles */
+button {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
     border-radius: 5px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Heading styles */
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
     color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, color 0.3s;
 }
 
-h3 {
+button.active {
+    box-shadow: 0 4px 8px rgba(46, 204, 113, 0.5);
+    color: #fff;
+    background-color: #2ecc71;
+}
+
+/* Image styles */
+img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for images */
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Category and subcategory styles */
+li > h3, li > h4 {
     font-size: 20px;
-    margin-bottom: 10px;
-    color: #333;
-    cursor: pointer; /* Add cursor pointer for better UX */
-    text-align: left; /* Move categories heading to the left */
-}
-
-/* List styles */
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin-left: 0; /* Move the categories list to the left */
-    padding-left: 0;
-}
-
-li {
     margin-bottom: 8px;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+li > h3:hover, li > h4:hover {
+    box-shadow: 0 4px 8px rgba(46, 204, 113, 0.5);
+}
+
+/* Nested subcategories */
+li > ul > li > h4 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+li > ul > li > h4:hover {
+    box-shadow: 0 2px 4px rgba(46, 204, 113, 0.5);
+}
+
+/* Adjusted indentation for nested subcategories */
+ul ul {
+    margin-left: 20px;
 }
