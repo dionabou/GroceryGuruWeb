@@ -10,26 +10,27 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import UpdatePassword from './pages/UpdatePassword';
 import { BuildingList } from './pages/BuildingList';
+import Favorites from './pages/Favorites';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/categories/:addressId" element={<Categories />} />
-          <Route path="/" exact Component={SignUp} />
-          <Route path="/login" Component={Login} />
-          <Route path="/home" Component={Home} />
-          <Route path="/update_password" Component={UpdatePassword} />
-          <Route path="/building_list" Component={BuildingList} />
-          <Route path="/store_selector" Component={StoreSelector} />
-          <Route path="/about" Component={About} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/categories/:addressId" element={<Categories />} />
+            <Route path="/" exact Component={SignUp} />
+            <Route path="/login" Component={Login} />
+            <Route path="/home" Component={Home} />
+            <Route path="/update_password" Component={UpdatePassword} />
+            <Route path="/building_list" Component={BuildingList} />
+            <Route path="/store_selector" Component={StoreSelector} />
+            <Route path="/about" Component={About} />
+            <Route path="/favorites" Component={Favorites} />
+          </Routes>
+        </main>
       </Router>
-      <label htmlFor=""></label>
-      <label htmlFor=""></label>
-      <label htmlFor=""></label>
       <Footer />
     </div>
   );

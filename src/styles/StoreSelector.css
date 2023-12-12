@@ -11,7 +11,7 @@
 /* Container styles - Apply styles similar to Categories container */
 .StoreSelector-container {
     max-width: 800px; /* Increase the max-width for a wider container */
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
