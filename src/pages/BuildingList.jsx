@@ -15,12 +15,12 @@ export const BuildingList = () => {
   ];
 
   const subtotal = "$50.00"; // Replace with data from database
-  const tax = "$5.00"; 
-  const gasCost = "$10.00"; 
-  const total = "$65.00"; 
+  const tax = "$5.00";
+  const gasCost = "$10.00";
+  const total = "$65.00";
 
   const travelTime = "Travel Time";
-  const travelTimeValue = "2 hours"; 
+  const travelTimeValue = "2 hours";
 
   return (
     <div className="building-list">
@@ -67,26 +67,26 @@ export const BuildingList = () => {
 
 
           {/* Financial information */}
-      <div className="financial-info">
-        <label>
-          <label className="financial-label">Subtotal:</label>
-          <label className="financial-value">{subtotal}</label>
-        </label>
-    <label>
-        <label className="financial-label">Tax:</label>
-        <label className="financial-value">{tax}</label>
-  </label>
+          <div className="financial-info">
+            <label>
+              <label className="financial-label">Subtotal:</label>
+              <label className="financial-value">{subtotal}</label>
+            </label>
+            <label>
+              <label className="financial-label">Tax:</label>
+              <label className="financial-value">{tax}</label>
+            </label>
 
-  <label>
-        <label className="financial-label">Gas Cost:</label>
-        <label className="financial-value">{gasCost}</label>
-  </label>
+            <label>
+              <label className="financial-label">Gas Cost:</label>
+              <label className="financial-value">{gasCost}</label>
+            </label>
 
-  <label>
-        <label className="financial-label">Total:</label>
-        <label className="financial-value">{total}</label>
-        </label>
-      </div>
+            <label>
+              <label className="financial-label">Total:</label>
+              <label className="financial-value">{total}</label>
+            </label>
+          </div>
 
 
           {/* Buttons at the bottom */}

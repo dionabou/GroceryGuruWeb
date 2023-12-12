@@ -1,21 +1,23 @@
-import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom'; 
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
-    const history = useHistory();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const handleLogout = () => {
-          
-            history.push('/signup');
-        };
+  const handleLogout = () => {
+    // Clear the authentication token from localStorage or wherever it's stored
+    localStorage.removeItem('token');
 
-        // Call the logout function when the component is mounted
-        handleLogout();
-    }, [history]);
+    // Redirect the user to the home page
+    navigate("/home");
+  };
 
-    
-    return null;
+  return (
+    <div>
+      <p>Are you sure you want to log out?</p>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
 };
 
 export default Logout;

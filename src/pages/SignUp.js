@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/SignUp.css';
-import '../pages/Home.js';
+import { addPosts } from '../api/Api.js';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -9,27 +9,80 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    zip: '',
-    hourlyRate: '',
+    streetAddress: '',
+    zipcode: '',
+    userTimeValue: '',
     make: '',
     model: '',
     year: '',
-    carMpg: '',
+    mpg: '',
     password: '',
     confirmPassword: '',
   });
 
+  const [error, setError] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(true);
+  const [validZipcode, setValidZipcode] = useState(true);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [id]: value }));
+
+    // Check if passwords match when the confirm password field changes
+    if (id === 'confirmPassword') {
+      setPasswordMatch(value === formData.password);
+    }
+
+    // Check if the entered ZIP code is part of the accepted list
+    if (id === 'zipcode') {
+      setValidZipcode(['45202', '45203', '45204', '45205', '45206', '45207', '45208', '45209', '45211', '45212', '45213', '45214', '45215', '45216', '45217', '45218', '45219', '45220', '45223', '45224', '45225', '45226', '45227', '45229', '45230', '45231', '45232', '45233', '45236', '45237', '45238', '45239', '45240', '45241', '45242', '45243', '45244', '45245', '45246', '45247', '45248', '45249', '45251', '45252', '45255'].includes(value));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Form submitted:', formData);
-      // Navigate to the home page
-      navigate("Home");
+      try {
+        const response = await addPosts(
+          formData.username,
+          formData.email,
+          formData.streetAddress,
+          formData.zipcode,
+          formData.userTimeValue,
+          formData.make,
+          formData.model,
+          formData.year,
+          formData.mpg,
+          formData.password,
+          formData.confirmPassword
+        );
+
+        console.log('User registered:', response);
+
+        // Reset form data
+        setFormData({
+          username: '',
+          email: '',
+          streetAddress: '',
+          zipcode: '',
+          userTimeValue: '',
+          make: '',
+          model: '',
+          year: '',
+          mpg: '',
+          password: '',
+          confirmPassword: '',
+        });
+
+        // Clear the error message
+        setError('');
+
+        // Navigate to the home page
+        navigate('Home');
+      } catch (error) {
+        console.error('', error);
+        setError(error.message);
+      }
     }
   };
 
@@ -38,26 +91,29 @@ const SignUp = () => {
     const requiredFieldsFilled =
       formData.username &&
       formData.email &&
-      formData.address &&
-      formData.zip &&
-      formData.hourlyRate &&
+      formData.streetAddress &&
+      formData.zipcode &&
+      formData.userTimeValue &&
       formData.make &&
       formData.model &&
       formData.year &&
-      formData.carMpg &&
+      formData.mpg &&
       formData.password &&
       formData.confirmPassword;
 
     // MPG validation (positive number)
-    const validMpg = !isNaN(formData.carMpg) && parseFloat(formData.carMpg) > 0;
+    const validmpg = !isNaN(formData.mpg) && parseFloat(formData.mpg) > 0;
 
     // Hourly rate validation (positive number)
-    const validHourlyRate = !isNaN(formData.hourlyRate) && parseFloat(formData.hourlyRate) > 0;
+    const validuserTimeValue = !isNaN(formData.userTimeValue) && parseFloat(formData.userTimeValue) > 0;
 
     // Year validation (four-digit number)
     const validYear = /^\d{4}$/.test(formData.year);
 
-    return requiredFieldsFilled && validMpg && validHourlyRate && validYear;
+    // Zipcode validation (check if it's in the accepted list)
+    const validZipcode = ['45202', '45203', '45204', '45205', '45206', '45207', '45208', '45209', '45211', '45212', '45213', '45214', '45215', '45216', '45217', '45218', '45219', '45220', '45223', '45224', '45225', '45226', '45227', '45229', '45230', '45231', '45232', '45233', '45236', '45237', '45238', '45239', '45240', '45241', '45242', '45243', '45244', '45245', '45246', '45247', '45248', '45249', '45251', '45252', '45255'].includes(formData.zipcode);
+
+    return requiredFieldsFilled && validmpg && validuserTimeValue && validYear && validZipcode && passwordMatch && validZipcode;
   };
 
   return (
@@ -67,7 +123,6 @@ const SignUp = () => {
         <div className="SignUp-form">
           <h2>Sign Up or Sign In to Get Started</h2>
           <form onSubmit={handleSubmit}>
-            {/* Your form inputs */}
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -86,24 +141,24 @@ const SignUp = () => {
               required
             />
 
-            
-          <label htmlFor="address">Address</label>
+            <label htmlFor="streetAddress">Street Address</label>
             <input
               type="text"
-              id="address"
-              value={formData.address}
+              id="streetAddress"
+              value={formData.streetAddress}
               onChange={handleChange}
               required
             />
 
-            <label htmlFor="zip">ZIP Code</label>
+            <label htmlFor="zipcode">ZIP Code</label>
             <input
               type="text"
-              id="zip"
-              value={formData.zip}
+              id="zipcode"
+              value={formData.zipcode}
               onChange={handleChange}
               required
             />
+            {!validZipcode && <small className="error-message">Please enter a valid ZIP code</small>}
 
             <label htmlFor="make">Car Make</label>
             <input
@@ -130,30 +185,30 @@ const SignUp = () => {
               value={formData.year}
               onChange={handleChange}
               required
-              pattern="\d{4}" // Four-digit number
+              pattern="\d{4}"
             />
             <small>Enter a valid four-digit year (e.g., 2022)</small>
 
-            <label htmlFor="hourlyRate">How much you value your time ($/hr)</label>
+            <label htmlFor="mpg">Car MPG</label>
             <input
               type="text"
-              id="hourlyRate"
-              value={formData.hourlyRate}
+              id="mpg"
+              value={formData.mpg}
               onChange={handleChange}
               required
               pattern="\d+(\.\d{1,2})?"
             />
+            <small>Enter a valid MPG (e.g., 25 or 30.5)</small>
 
-            <label htmlFor="carMpg">Car MPG</label>
+            <label htmlFor="userTimeValue">How much you value your time ($/hr)</label>
             <input
               type="text"
-              id="carMpg"
-              value={formData.carMpg}
+              id="userTimeValue"
+              value={formData.userTimeValue}
               onChange={handleChange}
               required
-              pattern="\d+(\.\d{1,2})?" // Accepts positive numbers with up to 2 decimal places
+              pattern="\d+(\.\d{1,2})?"
             />
-            <small>Enter a valid MPG (e.g., 25 or 30.5)</small>
 
             <label htmlFor="password">Password</label>
             <input
@@ -172,18 +227,24 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
-            <label htmlFor=""></label>
+            {!passwordMatch && <small className="error-message">Passwords do not match</small>}
+            <label htmlFor=" "></label>
             <button type="submit">Create Account</button>
           </form>
- 
+
+          <div>
+            <div className="SignUp-form">
+              {error && <div className="error-message error-message-red">{error}</div>}
+            </div>
+          </div>
+
           <p>
             By signing up for a groceryguru account, you agree to our{' '}
             <a href="/privacy-policy">Privacy Policy</a> and{' '}
             <a href="/terms-of-service">Terms of Service</a>.
           </p>
           <p>
-          Already have an account? <a onClick={() => navigate("Login")}>Sign in</a>
+            Already have an account? <a onClick={() => navigate("Login")}>Sign in</a>
           </p>
         </div>
       </div>
