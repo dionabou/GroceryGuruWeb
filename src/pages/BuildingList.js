@@ -14,7 +14,7 @@ export const BuildingList = () => {
   const [grandTotal, setGrandTotal] = useState("");
   const token = localStorage.getItem("token");
 
-  const fetchBuildingListData = async (shoppingListProductId) => {
+  const fetchBuildingListData = async () => {
     try {
       const response = await fetch(`http://localhost:8080/api/trips/?optimized=false&sequenced=false`, {
         method: 'GET',
@@ -27,8 +27,10 @@ export const BuildingList = () => {
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
-
+      
       const data = await response.json();
+
+      console.log(data);
       return data;
     } catch (error) {
       console.error('Error fetching shopping list data:', error.message);
@@ -73,28 +75,35 @@ export const BuildingList = () => {
           </div>
 
           <div className="shopping-list-header">
+            
             <label className="shopping-list-Products">Products</label>
             <label className="shopping-list-Qty">Qty</label>
             <label className="shopping-list-Price">Price</label>
             <label className="shopping-list-Total">Total</label>
           </div>
+          
 
-          <div className="product-details">
-            {products && (
-              <div className="product-container">
-                <div className="image-container">
-                  {products.imageUrl ? (
-                    <img className="image" alt="Product" src={products.imageUrl} />
-                  ) : (
-                    <p>Loading...</p>
-                  )}
-                </div>
-                <label>{products.quantity}</label>
-                <label>{products.price}</label>
-                <label>{products.total}</label>
-              </div>
-            )}
-          </div>
+
+
+  {products && products.length > 0 ? (
+    products.map((product, index) => (
+      <div key={index} className="product-container">
+        <div className="image-container">
+          {product.imageUrl ? (
+            <img className="image" alt="Product" src={product.imageUrl} />
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+        <label>{product.quantity}</label>
+        <label>{product.price}</label>
+        <label>{product.total}</label>
+      </div>
+    ))
+  ) : (
+    <p>No products available.</p>
+  )}
+
 
           <hr />
 

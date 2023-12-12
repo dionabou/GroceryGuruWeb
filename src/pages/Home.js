@@ -12,7 +12,7 @@ const Home = () => {
         <Link to="/favorites">Favorites</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/About">About</Link>
-        <Link to="/Logout">Log Out</Link>
+        <Link to="/Login">Log Out</Link>
       </nav>
 
       <div className="home-container">
