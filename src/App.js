@@ -30,6 +30,7 @@ function App() {
           <Route path="/Categories" Component={Categories} />   
           <Route path="/About" Component={About} />   
           <Route path="/ProductDetails/:companyStoreProductId" Component={ProductDetails} />  
+          <Route path="/Compare" Component={Compare} />   
         </Routes>
       </Router>
       <label htmlFor=""></label>
