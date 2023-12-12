@@ -32,6 +32,8 @@ function App() {
           <Route path="/building_list" Component={BuildingList} />
           <Route path="/store_selector" Component={StoreSelector} />
           <Route path="/about" Component={About} />
+          <Route path="/product_details/:companyStoreProductId" Component={ProductDetails} />
+          <Route path='/shopping_list/:userTripId' Component={Main} />
         </Routes>
       </Router>
       <Footer />

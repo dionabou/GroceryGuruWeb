@@ -56,39 +56,39 @@ const Categories = () => {
       Eggs: ['eggs', 'grade a', 'white', 'brown', 'large', 'extra large', 'cage free', 'jumbo', 'medium', 'free range', 'organic eggs'],
     },
     Meat: {
-      Beef: ['beef', 'ground', 'chuck', 'lean', 'angus', 'roast', 'hamburger', 'burger', 'goetta', 'shaved', 'steak', 'cubed', 'new york strip', 'sirloin', 'top round', 'ribeye', 'bottom round', 'flank', 'filet mignon', 'tenderloin','grass fed'],
+      Beef: ['beef', 'ground', 'chuck', 'lean', 'angus', 'roast', 'hamburger', 'burger', 'goetta', 'shaved', 'steak', 'cubed', 'new york strip', 'sirloin', 'top round', 'ribeye', 'bottom round', 'flank', 'filet mignon', 'tenderloin', 'grass fed'],
       Chicken: ['chicken', 'boneless', 'bone-in', 'wing', 'drumstick', 'breast', 'skinless', 'skin-on', 'tenderloin', 'thigh', 'organic', 'tender', 'whole', 'strip', 'gizzard', 'heart', 'leg'],
     },
-    'Paper Products':{
+    'Paper Products': {
       'Toilet paper': ['toilet paper', 'regular roll', 'double roll', 'mega roll', '1 ply', '2 ply', '3 ply', 'scented', 'recycled', 'rv', 'marine'],
-      'Paper towel' : ['paper towels', 'double roll', 'double plus roll', 'giant roll', 'big roll', 'select-a-size', 'pick-a-size', 'tear-a-square'],
-  },
-    Fruit: { 
-      Apples: ['apples', 'honeycrisp', 'gala' , 'pink lady', 'granny smith', 'organic', 'fuji', 'sweettango', 'cosmic crisp', 'opal', 'envy', 'red delicious', 'golden delicious', 'ambrosia', 'cortland', ],
-    Bananas: [ 'bananas', 'organic', 'plantain'],
-  },
-    Vegetables:{
-      Potatoes: ['potatoes', 'russet', 'jumbo', 'petite', 'gol', 'yukon gold', 'idaho', 'red', 'sweet', 'organic', 'fingerling', 'gourmet',  ],
-    Onions: ['onions', 'sweet', 'jumbo', 'yellow', 'medium', 'white', 'red', 'green', 'organic', 'peruvian', 'gold', 'peeled', 'diced'],
-    Lettuce: ['lettuce', 'iceberg', 'shredded', 'romaine', 'heart', 'green', 'leaf', 'organic', 'living', 'butter', 'red', 'baby', 'boston'],
-    Tomatoes: ['tomatoes', 'red', 'on the vine', 'petite', 'medley', 'snacking', 'roma', 'large', 'beefsteak', 'grape', 'cherry', 'salad', 'campari', 'vine ripe', 'organic', 'heirloom', 'orange'],
- 
+      'Paper towel': ['paper towels', 'double roll', 'double plus roll', 'giant roll', 'big roll', 'select-a-size', 'pick-a-size', 'tear-a-square'],
+    },
+    Fruit: {
+      Apples: ['apples', 'honeycrisp', 'gala', 'pink lady', 'granny smith', 'organic', 'fuji', 'sweettango', 'cosmic crisp', 'opal', 'envy', 'red delicious', 'golden delicious', 'ambrosia', 'cortland',],
+      Bananas: ['bananas', 'organic', 'plantain'],
+    },
+    Vegetables: {
+      Potatoes: ['potatoes', 'russet', 'jumbo', 'petite', 'gol', 'yukon gold', 'idaho', 'red', 'sweet', 'organic', 'fingerling', 'gourmet',],
+      Onions: ['onions', 'sweet', 'jumbo', 'yellow', 'medium', 'white', 'red', 'green', 'organic', 'peruvian', 'gold', 'peeled', 'diced'],
+      Lettuce: ['lettuce', 'iceberg', 'shredded', 'romaine', 'heart', 'green', 'leaf', 'organic', 'living', 'butter', 'red', 'baby', 'boston'],
+      Tomatoes: ['tomatoes', 'red', 'on the vine', 'petite', 'medley', 'snacking', 'roma', 'large', 'beefsteak', 'grape', 'cherry', 'salad', 'campari', 'vine ripe', 'organic', 'heirloom', 'orange'],
+
     }
   };
 
   const categoryTags = {
-    Milk: [ '1%', '2%', 'skim', 'whole', 'organic', 'gal', 'quart', 'qt', 'lactose free'],
-    Eggs: [ 'grade a', 'white', 'brown', 'large', 'extra large', 'cage free', 'jumbo', 'medium', 'free range', 'organic eggs'],
-    Beef: [ 'ground', 'chuck', 'lean', 'angus', 'roast', 'hamburger', 'burger', 'goetta', 'shaved', 'steak', 'cubed', 'new york strip', 'sirloin', 'top round', 'ribeye', 'bottom round', 'flank', 'filet mignon', 'tenderloin','grass fed'],
-    Chicken: [ 'boneless', 'bone-in', 'wing', 'drumstick', 'breast', 'skinless', 'skin-on', 'tenderloin', 'thigh', 'organic', 'tender', 'whole', 'strip', 'gizzard', 'heart', 'leg'],
-    'Toilet paper': [ 'regular roll', 'double roll', 'mega roll', '1 ply', '2 ply', '3 ply', 'scented', 'recycled', 'rv', 'marine'],
-    'Paper towel' : [ 'double roll', 'double plus roll', 'giant roll', 'big roll', 'select-a-size', 'pick-a-size', 'tear-a-square'],
-    Apples: [ 'honeycrisp', 'gala' , 'pink lady', 'granny smith', 'organic', 'fuji', 'sweettango', 'cosmic crisp', 'opal', 'envy', 'red delicious', 'golden delicious', 'ambrosia', 'cortland', ],
-    Bananas: [  'organic', 'plantain'],
-    Potatoes: [ 'russet', 'jumbo', 'petite', 'gol', 'yukon gold', 'idaho', 'red', 'sweet', 'organic', 'fingerling', 'gourmet',  ],
-    Onions: [ 'sweet', 'jumbo', 'yellow', 'medium', 'white', 'red', 'green', 'organic', 'peruvian', 'gold', 'peeled', 'diced'],
-    Lettuce: [ 'iceberg', 'shredded', 'romaine', 'heart', 'green', 'leaf', 'organic', 'living', 'butter', 'red', 'baby', 'boston'],
-    Tomatoes: [ 'red', 'on the vine', 'petite', 'medley', 'snacking', 'roma', 'large', 'beefsteak', 'grape', 'cherry', 'salad', 'campari', 'vine ripe', 'organic', 'heirloom', 'orange'],
+    Milk: ['1%', '2%', 'skim', 'whole', 'organic', 'gal', 'quart', 'qt', 'lactose free'],
+    Eggs: ['grade a', 'white', 'brown', 'large', 'extra large', 'cage free', 'jumbo', 'medium', 'free range', 'organic eggs'],
+    Beef: ['ground', 'chuck', 'lean', 'angus', 'roast', 'hamburger', 'burger', 'goetta', 'shaved', 'steak', 'cubed', 'new york strip', 'sirloin', 'top round', 'ribeye', 'bottom round', 'flank', 'filet mignon', 'tenderloin', 'grass fed'],
+    Chicken: ['boneless', 'bone-in', 'wing', 'drumstick', 'breast', 'skinless', 'skin-on', 'tenderloin', 'thigh', 'organic', 'tender', 'whole', 'strip', 'gizzard', 'heart', 'leg'],
+    'Toilet paper': ['regular roll', 'double roll', 'mega roll', '1 ply', '2 ply', '3 ply', 'scented', 'recycled', 'rv', 'marine'],
+    'Paper towel': ['double roll', 'double plus roll', 'giant roll', 'big roll', 'select-a-size', 'pick-a-size', 'tear-a-square'],
+    Apples: ['honeycrisp', 'gala', 'pink lady', 'granny smith', 'organic', 'fuji', 'sweettango', 'cosmic crisp', 'opal', 'envy', 'red delicious', 'golden delicious', 'ambrosia', 'cortland',],
+    Bananas: ['organic', 'plantain'],
+    Potatoes: ['russet', 'jumbo', 'petite', 'gol', 'yukon gold', 'idaho', 'red', 'sweet', 'organic', 'fingerling', 'gourmet',],
+    Onions: ['sweet', 'jumbo', 'yellow', 'medium', 'white', 'red', 'green', 'organic', 'peruvian', 'gold', 'peeled', 'diced'],
+    Lettuce: ['iceberg', 'shredded', 'romaine', 'heart', 'green', 'leaf', 'organic', 'living', 'butter', 'red', 'baby', 'boston'],
+    Tomatoes: ['red', 'on the vine', 'petite', 'medley', 'snacking', 'roma', 'large', 'beefsteak', 'grape', 'cherry', 'salad', 'campari', 'vine ripe', 'organic', 'heirloom', 'orange'],
   };
 
 
@@ -106,7 +106,7 @@ const Categories = () => {
       setSelectedCheckboxes({});
     }
   };
-  
+
   const handleSubcategoryClick = (subcategory) => {
     if (selectedSubcategory === subcategory) {
       // If the clicked subcategory is already open, close it
@@ -118,7 +118,7 @@ const Categories = () => {
       setSelectedCheckboxes({});
     }
   };
-  
+
 
   const handleCheckboxChange = (checkbox) => {
     setSelectedCheckboxes((prevCheckboxes) => ({ ...prevCheckboxes, [checkbox]: !prevCheckboxes[checkbox] }));
@@ -175,7 +175,7 @@ const Categories = () => {
                                 .map((product) => (
                                   <li key={product.id}>
                                     {/* Use Link to navigate to product details page with productId */}
-                                    <Link to={`/product-details/${product.id}`}>
+                                    <Link to={`/product_details/${product.id}`}>
                                       <div>
                                         <p>Name: {product.name}</p>
                                         <p>Price: {product.price}</p>
