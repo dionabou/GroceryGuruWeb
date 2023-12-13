@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import UpdatePassword from './pages/UpdatePassword';
 import { BuildingList } from './pages/BuildingList';
 import Favorites from './pages/Favorites';
+import ShoppingList from './pages/ShoppingList';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/categories/:addressId" element={<Categories />} />
+            <Route path="/trips/:tripId" element={<ShoppingList />} />
             <Route path="/" exact Component={SignUp} />
             <Route path="/login" Component={Login} />
             <Route path="/home" Component={Home} />

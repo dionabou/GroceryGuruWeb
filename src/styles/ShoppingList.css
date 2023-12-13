@@ -1,0 +1,4 @@
+.selected-row {
+    text-decoration: line-through;
+    color: #808080; /* or any color you prefer for struck-through text */
+  }
