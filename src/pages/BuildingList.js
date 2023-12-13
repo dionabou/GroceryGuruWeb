@@ -6,6 +6,7 @@ export const BuildingList = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [trip, setTrip] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
   const inputRefs = useRef({});
 
   useEffect(() => {
@@ -39,6 +40,8 @@ export const BuildingList = () => {
 
   const handleUpdate = async (shoppingListId, shoppingListProductId, quantity) => {
     try {
+      setIsLoading(true); // Set loading to true on button click
+
       const response = await fetch(`http://localhost:8080/api/shoppinglist/products`, {
         method: 'PATCH',
         headers: {
@@ -47,38 +50,116 @@ export const BuildingList = () => {
         },
         body: JSON.stringify({ shoppingListId, shoppingListProductId, quantity }),
       });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      console.log('Product updated successfully!');
+
+      // Simulate loading for 30 seconds
+      setTimeout(() => {
+        setIsLoading(false); // Set loading to false after 30 seconds
+      }, 30000);
+
+      // Refresh the page after successful update
+      window.location.reload();
+    } catch (error) {
+      console.error('Error updating product:', error.message);
+      setIsLoading(false); // Set loading to false on error
+    }
+  };
+
+  const handleDelete = async (shoppingListId, shoppingListProductId, quantity) => {
+    try {
+      setIsLoading(true); // Set loading to true on button click
+
+      const response = await fetch(`http://localhost:8080/api/shoppinglist/products/${shoppingListId}/${shoppingListProductId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        }
+      });
   
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
   
-      // Instead of expecting JSON, just log the success message
-      console.log('Product updated successfully!');
-      
+      console.log('Product deleted successfully!');
+
+      // Simulate loading for 30 seconds
+      setTimeout(() => {
+        setIsLoading(false); // Set loading to false after 30 seconds
+      }, 30000);
+
+      // Refresh the page after successful deletion
+      window.location.reload();
     } catch (error) {
-      console.error('Error updating product:', error.message);
+      console.error('Error deleting product:', error.message);
+      setIsLoading(false); // Set loading to false on error
     }
   };
-  
 
-  const handleDelete = async (shoppingListId, shoppingListProductId, quantity) => {
+  const handleOptimize = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/shoppinglist/delete`, {
-        method: 'POST',
+      setIsLoading(true); // Set loading to true on button click
+
+      const response = await fetch(`http://localhost:8080/api/trips/optimize_trip`, {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ shoppingListId, shoppingListProductId, quantity }),
       });
 
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
 
-      console.log('Product deleted successfully!');
+      console.log('Trip optimized successfully!');
+
+      // Simulate loading for 30 seconds
+      setTimeout(() => {
+        setIsLoading(false); // Set loading to false after 30 seconds
+      }, 30000);
+
+      // Redirect to the main page if optimization is successful
+      navigate("/compare");
     } catch (error) {
-      console.error('Error deleting product:', error.message);
+      console.error('Error optimizing trip:', error.message);
+      setIsLoading(false); // Set loading to false on error
+    }
+  };
+
+  const handleShowList = async () => {
+    try {
+      setIsLoading(true); // Set loading to true on button click
+
+      const response = await fetch(`http://localhost:8080/api/trips/optimize_trip`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      console.log('Show list request successful!');
+
+      // Simulate loading for 30 seconds
+      setTimeout(() => {
+        setIsLoading(false); // Set loading to false after 30 seconds
+      }, 30000);
+
+      // Redirect to the main page if the request is successful
+      navigate("/main");
+    } catch (error) {
+      console.error('Error requesting show list:', error.message);
+      setIsLoading(false); // Set loading to false on error
     }
   };
 
@@ -124,7 +205,7 @@ export const BuildingList = () => {
                       <td className="text-center align-items-end">${product.total}</td>
                       <td className="text-center align-items-end">
                         <button
-                          onClick={() => handleUpdate(shoppingList.shoppingListId, product.id,  parseInt(inputRefs.current[product.id].value, 10))}
+                          onClick={() => handleUpdate(shoppingList.shoppingListId, product.id, parseInt(inputRefs.current[product.id].value, 10))}
                         >
                           UPDATE
                         </button>
@@ -133,7 +214,7 @@ export const BuildingList = () => {
                         <button
                           onClick={() => {
                             if (window.confirm('Are you sure you want to delete this product?')) {
-                              handleDelete(shoppingList.shoppingListId, product.id,  parseInt(inputRefs.current[product.id].value, 10));
+                              handleDelete(shoppingList.shoppingListId, product.id, parseInt(inputRefs.current[product.id].value, 10));
                             }
                           }}
                         >
@@ -151,11 +232,16 @@ export const BuildingList = () => {
           <p className="text-end"><u><b>Total Grocery Cost: </b></u> ${trip.totalGroceryCost}</p>
 
           <div className="button-container">
-            <button className="show-list-button" onClick={() => navigate("/main")}>Show with this list</button>
-            <button className="optimize-button" onClick={() => navigate("/compare")}>
+            <button className="show-list-button" onClick={handleShowList}>Show with this list</button>
+            <button className="optimize-button" onClick={handleOptimize}>
               Optimize
             </button>
+
+            
           </div>
+
+          {/* Display loading message when isLoading is true */}
+          {isLoading && <p style={{ color: 'blue', marginTop: '10px' }}>Page is loading, please wait...</p>}
         </div>
       ) : (
         <p>Loading...</p>
