@@ -2,3 +2,11 @@
     text-decoration: line-through;
     color: #808080; /* or any color you prefer for struck-through text */
   }
+
+.trip-container {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

@@ -63,22 +63,40 @@ function ShoppingList() {
   }
 
   return (
-    <div className="bg-white row mx-auto w-75 p-3" style={{ marginTop: '20px', marginBottom: '20px' }}>
-      {trip ? (
+    <div className="bg-white row mx-auto w-75 p-3 trip-container" style={{ marginTop: '20px', marginBottom: '20px' }}>
+        {trip ? (
         <div>
-          {trip.listname ? (
-            <h1>{trip.listname}</h1>
-          ) : (
-            <h1>Your Trip</h1>
-          )}
-          {trip.shoppingLists.map((shoppingList) => (
-            <div className="row align-items-end" key={shoppingList.shoppingListId}>
-              <h2 className="col">{shoppingList.companyStore} - {shoppingList.companyStoreAddress}</h2>
-              <p className="col"></p>
-              <div className='table-responsive'>
-              <table className="table">
+            <div className='mb-3'> 
+                <h1><u>Trip Information</u></h1>
+                <div className="row" >
+                    <div className="col-md-6 col-12">
+                        {trip.shoppingLists.map((shoppingList) => (
+                            <div key={shoppingList.shoppingListId}> 
+                                <h4>{shoppingList.companyStore}</h4>
+                                <span>
+                                    <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(shoppingList.companyStoreAddress)}`}>
+                                        {shoppingList.companyStoreAddress}
+                                    </a>
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="col-md-6 col-12">
+                        <p className='text-end m-0'>Estimated Travel Time: {trip.totalTravelTime} minutes</p>
+                        <p className='text-end m-0'>Total Grocery Cost: ${trip.totalGroceryCost}</p>
+                        <p className='text-end m-0'>Total Grocery Cost: ${trip.totalGasCost}</p>
+                        <hr style={{marginTop: '8px', marginBottom: '8px'}}/>
+                        <p className='text-end m-0'>Grand Total: ${trip.grandTotal}</p>
+                    </div>
+                </div>
+            </div>
+            {trip.shoppingLists.map((shoppingList) => (
+            <div key={shoppingList.shoppingListId}>
+                <h2 className='text-center'>{shoppingList.companyStore}</h2>
+                <div className='table-responsive'>
+                <table className="table">
                 <thead>
-                  <tr>
+                    <tr>
                     <th></th>
                     <th class="text-start">Name</th>
                     <th class="text-center">Price</th>
@@ -87,10 +105,10 @@ function ShoppingList() {
                     <th class="text-center">In Cart</th>
                     <th></th>
                     <th></th>
-                  </tr>
+                    </tr>
                 </thead>
                 <tbody>
-                  {shoppingList.shoppingListProductResponseList.map((product) => (
+                    {shoppingList.shoppingListProductResponseList.map((product) => (
                     <tr key={product.id} className={selectedRows.includes(product.id) ? 'selected-row' : ''}>
                         <td><img src={product.productImage} alt={product.productName} className="product-image" /></td>
                         <td class="text-start align-items-end">{product.productName}</td>
@@ -105,30 +123,16 @@ function ShoppingList() {
                         />
                         </td>
                     </tr>
-                  ))}
+                    ))}
                 </tbody>
-              </table>
-              </div>
-              <p className="text-end"><u><b>Grocery Cost: </b></u> ${shoppingList.groceryCost}</p>
+                </table>
+                </div>
             </div>
-          ))}
-          <br/>
-
-          <p className="text-center"><u><b>Total Travel Time: </b></u> {trip.totalTravelTime} minutes</p>
-
-          <p className="text-end"><u><b>Total Grocery Cost: </b></u> ${trip.totalGroceryCost}</p>
-          <p className="text-end"><u><b>Total Gas Cost: </b></u> ${trip.totalGasCost}</p>
-          <p className="text-end"><u><b>Grand Total: </b></u> ${trip.grandTotal}</p>
-          <div className="button-container">
-            <button className="show-list-button" onClick={() => navigate("/main")}>Show with this list</button>
-            <button className="optimize-button" onClick={() => navigate("/compare")}>
-              Optimize
-            </button>
-          </div>
+            ))}
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+        ) : (
+            <p>Loading...</p>
+        )}
     </div>
   );
 }
