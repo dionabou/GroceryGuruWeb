@@ -4,40 +4,18 @@ import { SelectButton } from "./SelectButton";
 import "../styles/OptimizedBlock.css";
 
 const OptimizedBlock = ({ className, selectButtonImage, totalValue }) => {
-  const [optimizedData, setOptimizedData] = useState({
-    user_trip_id: null,
-    active_trip: null,
-    favorite_trip: null,
-    gas_cost: null,
-    grocery_cost: null,
-    list_name: "",
-    optimized: null,
-    travel_time: null,
-    user_id: null,
-    egg_total: null, // Assuming egg_total is a property in your API response
-    // ... (other properties)
-  });
-
+  const [optimizedData, setOptimizedData] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Retrieve the access token from localStorage
-    const storedToken = localStorage.getItem("token");
-
-    // Check if a token is available
-    if (!storedToken) {
-      setError("Access token not found. Please log in.");
-      return;
-    }
-
-    // Fetch optimized data from the API
-    const fetchOptimizedData = async () => {
+    const fetchData = async () => {
       try {
         const response = await fetch('/api/trips/compare', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${storedToken}`, // Use the stored token
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
           },
         });
 
@@ -47,19 +25,21 @@ const OptimizedBlock = ({ className, selectButtonImage, totalValue }) => {
         }
 
         if (!response.ok) {
-          throw new Error("Failed to fetch optimized data");
+          throw new Error("Failed to fetch data");
         }
 
         const data = await response.json();
-        setOptimizedData(data); // Update state with fetched data
+        setOptimizedData(data);
       } catch (error) {
-        console.error("Error fetching optimized data:", error);
-        setError("Error fetching optimized data. Please try again later.");
+        console.error("Error fetching data:", error);
+        setError("Error fetching data. Please try again later.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    fetchOptimizedData();
-  }, []); // Empty dependency array since we only want to run this effect once during component mount
+    fetchData();
+  }, []);
 
   if (error) {
     return <div className="error-message">{error}</div>;
@@ -67,14 +47,43 @@ const OptimizedBlock = ({ className, selectButtonImage, totalValue }) => {
 
   return (
     <div className={`optimized-block ${className}`}>
-      {/* ... (other components using optimizedData properties) ... */}
-      <div className="text-wrapper-70">{optimizedData.egg_total}</div>
-      {/* Wrap the SelectButton with Link for navigation */}
-      <Link to="../ShoppingList/Main" className="select-link">
-        <SelectButton className="select-button-instance" />
-      </Link>
-      <div className="text-wrapper-71">Total</div>
-      <div className="text-wrapper-72">{totalValue}</div>
+      {optimizedData.map((optimized) => (
+        <div key={optimized.id}>
+          <div className="text-wrapper-3">Total</div>
+          <div className="text-wrapper-4">{optimized.totalTravelTime}</div>
+
+          {optimized.shoppingLists.map((shoppingList) => (
+            <div key={shoppingList.shoppingListId}>
+              <div>Store: {shoppingList.companyStore}</div>
+              <div>Address: {shoppingList.companyStoreAddress}</div>
+
+              {shoppingList.shoppingListProductResponseList.map((product) => (
+                <div key={product.id}>
+                  <div>{product.productName}</div>
+                  <div>Quantity: {product.quantity}</div>
+                  <div>Price: {product.price}</div>
+                  <div>Total: {product.total}</div>
+                  <img src={product.productImage} alt={product.productName} style={{ maxWidth: "100px" }} />
+                </div>
+              ))}
+
+              <div>Grocery Cost: {shoppingList.groceryCost}</div>
+            </div>
+          ))}
+
+          <div className="overlap-group-wrapper">
+            <div className="overlap-group">
+              <div className="rectangle" />
+              <div className="text-wrapper-32">Select</div>
+              <Link to="../ShoppingList/Main" className="select-link">
+                <SelectButton className="select-button-instance" />
+              </Link>
+            </div>
+          </div>
+          <div className="text-wrapper-33">Grand Total: {optimized.grandTotal}</div>
+          <div className="text-wrapper-81">{totalValue}</div>
+        </div>
+      ))}
     </div>
   );
 };

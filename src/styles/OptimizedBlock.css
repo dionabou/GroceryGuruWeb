@@ -1,551 +1,98 @@
 .optimized-block {
-    background-color: #abff9e;
-    border-radius: 38px;
-    box-shadow: -5px 5px 4px #00000040;
-    height: 750px;
-    position: relative;
-    width: 650px;
-  }
-  
-  .optimized-block .text-wrapper-35 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 541px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 101px;
-  }
-  
-  .optimized-block .text-wrapper-36 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 448px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 101px;
-  }
-  
-  .optimized-block .text-wrapper-37 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 373px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 101px;
-  }
-  
-  .optimized-block .text-wrapper-38 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 373px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 217px;
-  }
-  
-  .optimized-block .text-wrapper-39 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 354px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 319px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-40 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 537px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 319px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-41 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 441px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 319px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-42 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 38px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 316px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-43 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 200px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 280px;
-    width: 470px;
-  }
-  
-  .optimized-block .text-wrapper-44 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 20px;
-    font-weight: 800;
-    left: 28px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 292px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-45 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 158px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 76px;
-    width: 158px;
-  }
-  
-  .optimized-block .text-wrapper-46 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 190px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 6px;
-    width: 495px;
-  }
-  
-  .optimized-block .text-wrapper-47 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 20px;
-    font-weight: 800;
-    left: 28px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 22px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-48 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 354px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 48px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-49 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 533px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 48px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .text-wrapper-50 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 439px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 48px;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .overlap {
-    height: 118px;
-    left: 38px;
-    position: absolute;
-    top: 48px;
-    width: 110px;
-  }
-  
-  .optimized-block .text-wrapper-51 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 0;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 0;
-    white-space: nowrap;
-  }
-  
-  .optimized-block .meijerchick {
-    height: 110px;
-    left: 0;
-    object-fit: cover;
-    position: absolute;
-    top: 50px;
-    width: 110px;
-  }
-  
-  .optimized-block .text-wrapper-52 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 546px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 471px;
-  }
-  
-  .optimized-block .img {
-    height: 90px;
-    left: 38px;
-    object-fit: cover;
-    position: absolute;
-    top: 435px;
-    width: 110px;
-  }
-  
-  .optimized-block .text-wrapper-53 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 373px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 471px;
-  }
-  
-  .optimized-block .text-wrapper-54 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 158px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 462px;
-    width: 131px;
-  }
-  
-  .optimized-block .text-wrapper-55 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 450px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 471px;
-  }
-  
-  .optimized-block .text-wrapper-56 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 336px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 560px;
-  }
-  
-  .optimized-block .text-wrapper-57 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 243px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 560px;
-  }
-  
-  .optimized-block .text-wrapper-58 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 578px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 602px;
-    width: 28px;
-  }
-  
-  .optimized-block .text-wrapper-59 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 493px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 600px;
-    width: 69px;
-  }
-  
-  .optimized-block .text-wrapper-60 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 493px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 580px;
-    width: 27px;
-  }
-  
-  .optimized-block .text-wrapper-61 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 493px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 560px;
-    width: 67px;
-  }
-  
-  .optimized-block .line-2 {
-    height: 1px;
-    left: 18px;
-    object-fit: cover;
-    position: absolute;
-    top: 552px;
-    width: 602px;
-  }
-  
-  .optimized-block .text-wrapper-62 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 569px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 562px;
-    width: 37px;
-  }
-  
-  .optimized-block .text-wrapper-63 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 578px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 582px;
-    width: 28px;
-  }
-  
-  .optimized-block .text-wrapper-64 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 372px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 369px;
-    width: 10px;
-  }
-  
-  .optimized-block .text-wrapper-65 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 446px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 369px;
-    width: 32px;
-  }
-  
-  .optimized-block .text-wrapper-66 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 542px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 369px;
-    width: 32px;
-  }
-  
-  .optimized-block .text-wrapper-67 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 158px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 369px;
-    width: 118px;
-  }
-  
-  .optimized-block .broc-2 {
-    height: 84px;
-    left: 38px;
-    object-fit: cover;
-    position: absolute;
-    top: 340px;
-    width: 110px;
-  }
-  
-  .optimized-block .meijeregg {
-    height: 110px;
-    left: 38px;
-    object-fit: cover;
-    position: absolute;
-    top: 223px;
-    width: 110px;
-  }
-  
-  .optimized-block .text-wrapper-68 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 158px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 200px;
-    width: 122px;
-  }
-  
-  .optimized-block .text-wrapper-69 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 448px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 217px;
-  }
-  
-  .optimized-block .text-wrapper-70 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 541px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 217px;
-  }
-  
-  .optimized-block .select-button-instance {
-    left: 175px !important;
-    position: absolute !important;
-    top: 663px !important;
-  }
-  
-  .optimized-block .text-wrapper-71 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 494px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 620px;
-    width: 33px;
-  }
-  
-  .optimized-block .text-wrapper-72 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 570px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 622px;
-    width: 37px;
-  }
-  
+  background-color: #abff9e; /* Keep the original green color */
+  border-radius: 38px;
+  box-shadow: -5px 5px 4px #00000040;
+  height: 750px; /* Adjust height if needed */
+  position: relative;
+  width: 650px;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  padding: 20px; /* Keep padding */
+}
+
+.optimized-item {
+  margin-bottom: 20px;
+}
+
+.shopping-list {
+  margin-bottom: 15px;
+}
+
+.product-info {
+  margin-bottom: 10px;
+}
+
+.text-wrapper-73,
+.text-wrapper-74,
+.text-wrapper-80 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%; /* Occupy full width */
+}
+
+.product-image-wrapper {
+  margin-top: 10px;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.error-message {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Additional styles to handle font size */
+.text-wrapper-74,
+.text-wrapper-80 {
+  font-size: 14px;
+}
+
+/* Fix for duplicated select button */
+.overlap-group-wrapper {
+  height: 45px; /* Adjust height if needed */
+  left: 175px;
+  position: absolute;
+  top: 663px; /* Adjust top if needed */
+  width: 300px; /* Adjust width if needed */
+}
+
+.overlap-group {
+  border-radius: 15px;
+  height: 45px;
+  position: relative;
+}
+
+/* Ensure the styles are applied to only one instance of SelectButton and link */
+.overlap-group .rectangle {
+  background-color: #054fb9; /* Change color to match user-created-block */
+  border-radius: 15px;
+  height: 45px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 300px;
+}
+
+.overlap-group .text-wrapper-32 {
+  color: #ffffff; /* Change text color to match user-created-block */
+  font-family: "Lato", Helvetica;
+  font-size: 24px;
+  font-weight: 800;
+  left: 121px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 7px;
+}
+
+.select-link {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #ffffff; /* Change text color to match user-created-block */
+}

@@ -4,18 +4,7 @@ import { SelectButton } from "./SelectButton";
 import "../styles/UserCreatedBlock.css";
 
 const UserCreatedBlock = ({ className, selectButtonImage, totalValue }) => {
-  const [tripInfo, setTripInfo] = useState({
-    user_trip_id: null,
-    active_trip: null,
-    favorite_trip: null,
-    gas_cost: null,
-    grocery_cost: null,
-    list_name: "",
-    optimized: null,
-    travel_time: null,
-    user_id: null,
-  });
-
+  const [tripInfo, setTripInfo] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -65,20 +54,48 @@ const UserCreatedBlock = ({ className, selectButtonImage, totalValue }) => {
 
   return (
     <div className={`user-created-block ${className}`}>
-      <div className="text-wrapper-3">Total</div>
-      <div className="text-wrapper-4">{tripInfo.travel_time}</div>
-      {/* ... (other components using tripInfo properties) ... */}
-      <div className="overlap-group-wrapper">
-        <div className="overlap-group">
-          <div className="rectangle" />
-          <div className="text-wrapper-32">Select</div>
-          {/* Wrap the SelectButton with Link for navigation */}
-          <Link to="../ShoppingList/Main" className="select-link">
-            <SelectButton className="select-button-instance" />
-          </Link>
+      {tripInfo.map((trip) => (
+        <div key={trip.id}>
+          <div className="text-wrapper-3">Total</div>
+          <div className="text-wrapper-4">{trip.totalTravelTime}</div>
+
+          {/* Render shopping lists for each trip */}
+          {trip.shoppingLists.map((shoppingList) => (
+            <div key={shoppingList.shoppingListId}>
+              <div>Store: {shoppingList.companyStore}</div>
+              <div>Address: {shoppingList.companyStoreAddress}</div>
+
+              {/* Render products for each shopping list */}
+              {shoppingList.shoppingListProductResponseList.map((product) => (
+                <div key={product.id}>
+                  <div>{product.productName}</div>
+                  <div>Quantity: {product.quantity}</div>
+                  <div>Price: {product.price}</div>
+                  <div>Total: {product.total}</div>
+                  {/* Include product image */}
+                  <img src={product.productImage} alt={product.productName} style={{ maxWidth: "100px" }} />
+                  {/* Add more fields as needed */}
+                </div>
+              ))}
+              
+              <div>Grocery Cost: {shoppingList.groceryCost}</div>
+            </div>
+          ))}
+          
+          {/* Render other components using trip properties */}
+          <div className="overlap-group-wrapper">
+            <div className="overlap-group">
+              <div className="rectangle" />
+              <div className="text-wrapper-32">Select</div>
+              {/* Wrap the SelectButton with Link for navigation */}
+              <Link to="../ShoppingList/Main" className="select-link">
+                <SelectButton className="select-button-instance" />
+              </Link>
+            </div>
+          </div>
+          <div className="text-wrapper-33">Grand Total: {trip.grandTotal}</div>
         </div>
-      </div>
-      <div className="text-wrapper-33">{totalValue}</div>
+      ))}
     </div>
   );
 };

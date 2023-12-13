@@ -1,485 +1,96 @@
 .user-created-block {
-    background-color: #d9d9d9;
-    border-radius: 38px;
-    box-shadow: -5px 5px 4px #00000040;
-    height: 750px;
-    position: relative;
-    width: 650px;
-  }
-  
-  .user-created-block .text-wrapper-3 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 503px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 595px;
-    width: 33px;
-  }
-  
-  .user-created-block .text-wrapper-4 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 329px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 527px;
-  }
-  
-  .user-created-block .text-wrapper-5 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 239px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 527px;
-  }
-  
-  .user-created-block .text-wrapper-6 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 585px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 575px;
-  }
-  
-  .user-created-block .text-wrapper-7 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 503px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 575px;
-  }
-  
-  .user-created-block .text-wrapper-8 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 503px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 555px;
-  }
-  
-  .user-created-block .text-wrapper-9 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 503px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 535px;
-  }
-  
-  .user-created-block .chick {
-    height: 102px;
-    left: 27px;
-    object-fit: cover;
-    position: absolute;
-    top: 292px;
-    width: 111px;
-  }
-  
-  .user-created-block .text-wrapper-10 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 545px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 221px;
-  }
-  
-  .user-created-block .malk {
-    height: 90px;
-    left: 27px;
-    object-fit: cover;
-    position: absolute;
-    top: 186px;
-    width: 110px;
-  }
-  
-  .user-created-block .heritage-farm {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 153px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 316px;
-    width: 166px;
-  }
-  
-  .user-created-block .text-wrapper-11 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 354px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 221px;
-  }
-  
-  .user-created-block .p {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 153px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 198px;
-    width: 131px;
-  }
-  
-  .user-created-block .egg {
-    height: 90px;
-    left: 27px;
-    object-fit: cover;
-    position: absolute;
-    top: 80px;
-    width: 115px;
-  }
-  
-  .user-created-block .text-wrapper-12 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 545px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 115px;
-  }
-  
-  .user-created-block .text-wrapper-13 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 440px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 115px;
-  }
-  
-  .user-created-block .text-wrapper-14 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 153px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 93px;
-    width: 132px;
-  }
-  
-  .user-created-block .text-wrapper-15 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 354px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 115px;
-  }
-  
-  .user-created-block .text-wrapper-16 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 335px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 53px;
-    white-space: nowrap;
-  }
-  
-  .user-created-block .text-wrapper-17 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 538px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 53px;
-    white-space: nowrap;
-  }
-  
-  .user-created-block .text-wrapper-18 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 432px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 53px;
-    white-space: nowrap;
-  }
-  
-  .user-created-block .text-wrapper-19 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 16px;
-    font-weight: 800;
-    left: 27px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 53px;
-    white-space: nowrap;
-  }
-  
-  .user-created-block .text-wrapper-20 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 198px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 9px;
-    width: 464px;
-  }
-  
-  .user-created-block .text-wrapper-21 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 20px;
-    font-weight: 800;
-    left: 26px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 22px;
-    white-space: nowrap;
-  }
-  
-  .user-created-block .text-wrapper-22 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 440px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 221px;
-  }
-  
-  .user-created-block .text-wrapper-23 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 354px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 334px;
-  }
-  
-  .user-created-block .text-wrapper-24 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 354px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 443px;
-  }
-  
-  .user-created-block .text-wrapper-25 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 432px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 334px;
-  }
-  
-  .user-created-block .text-wrapper-26 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 440px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 443px;
-  }
-  
-  .user-created-block .text-wrapper-27 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 545px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 443px;
-  }
-  
-  .user-created-block .text-wrapper-28 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 537px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 334px;
-  }
-  
-  .user-created-block .line {
-    height: 1px;
-    left: 27px;
-    object-fit: cover;
-    position: absolute;
-    top: 515px;
-    width: 602px;
-  }
-  
-  .user-created-block .text-wrapper-29 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 577px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 535px;
-  }
-  
-  .user-created-block .text-wrapper-30 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 585px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 555px;
-  }
-  
-  .user-created-block .text-wrapper-31 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 153px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 443px;
-  }
-  
-  .user-created-block .broc {
-    height: 84px;
-    left: 27px;
-    object-fit: cover;
-    position: absolute;
-    top: 410px;
-    width: 110px;
-  }
-  
-  .user-created-block .overlap-group-wrapper {
-    height: 45px;
-    left: 175px;
-    position: absolute;
-    top: 663px;
-    width: 300px;
-  }
-  
-  .user-created-block .overlap-group {
-    border-radius: 15px;
-    height: 45px;
-    position: relative;
-  }
-  
-  .user-created-block .rectangle {
-    background-color: #054fb9;
-    border-radius: 15px;
-    height: 45px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 300px;
-  }
-  
-  .user-created-block .text-wrapper-32 {
-    color: #ffffff;
-    font-family: "Lato", Helvetica;
-    font-size: 24px;
-    font-weight: 800;
-    left: 121px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 7px;
-  }
-  
-  .user-created-block .text-wrapper-33 {
-    color: #000000;
-    font-family: "Lato", Helvetica;
-    font-size: 14px;
-    font-weight: 800;
-    left: 577px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 595px;
-    width: 37px;
-  }
-  
+  background-color: #d9d9d9;
+  border-radius: 38px;
+  box-shadow: -5px 5px 4px #00000040;
+  height: 750px;
+  position: relative;
+  width: 650px;
+}
+
+.user-created-block .text-wrapper-3 {
+  color: #000000;
+  font-family: "Lato", Helvetica;
+  font-size: 14px;
+  font-weight: 800;
+  left: 503px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 595px;
+  width: 33px;
+}
+
+.user-created-block .text-wrapper-4 {
+  color: #000000;
+  font-family: "Lato", Helvetica;
+  font-size: 14px;
+  font-weight: 800;
+  left: 329px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 527px;
+}
+
+.user-created-block .text-wrapper-5 {
+  color: #000000;
+  font-family: "Lato", Helvetica;
+  font-size: 14px;
+  font-weight: 800;
+  left: 239px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 527px;
+}
+
+/* ... other styles ... */
+
+.user-created-block .overlap-group-wrapper {
+  height: 45px;
+  left: 175px;
+  position: absolute;
+  top: 663px;
+  width: 300px;
+}
+
+.user-created-block .overlap-group {
+  border-radius: 15px;
+  height: 45px;
+  position: relative;
+}
+
+.user-created-block .rectangle {
+  background-color: #054fb9;
+  border-radius: 15px;
+  height: 45px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 300px;
+}
+
+.user-created-block .text-wrapper-32 {
+  color: #ffffff;
+  font-family: "Lato", Helvetica;
+  font-size: 24px;
+  font-weight: 800;
+  left: 121px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 7px;
+}
+
+.user-created-block .text-wrapper-33 {
+  color: #000000;
+  font-family: "Lato", Helvetica;
+  font-size: 14px;
+  font-weight: 800;
+  left: 577px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 595px;
+  width: 37px;
+}
