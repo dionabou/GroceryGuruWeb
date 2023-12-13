@@ -9,8 +9,8 @@ export const Main = () => {
     <div className="main">
       <div className="div-2">
         <TripInfo className="trip-info-instance" />
-         <Store1 className="store1-instance" />
-         <Store2 className="store2-instance" />  
+        <Store1 className="store1-instance" />
+        <Store2 className="store2-instance" />
         <div className="text-wrapper-41">Trip Name:</div>
         <div className="text-wrapper-42">The Essentials</div>
         <div className="text-wrapper-43">Edit</div>

@@ -1,19 +1,22 @@
 import './App.css';
 import Navbar from './components/Navbar';
-// import Login from './pages/Login';
- import Home from './pages/Home';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignUp from './pages/SignUp';
 import Footer from './components/Footer';
-import Login from './pages/Login';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { BuildingList } from './pages/BuildingList';
-import ProductDetails  from './pages/ProductDetails';
-import { Compare } from './compare/Compare';
-import { Main } from './ShoppingList/Main';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import  ProductDetails  from './pages/ProductDetails';
+import SignUp from './pages/SignUp';
 import UpdatePassword from './pages/UpdatePassword';
-import StoreSelector from './pages/StoreSelector';
+import { Main } from './ShoppingList/Main';
+import { Compare } from './compare/Compare';
 import Categories from './pages/Categories';
 import About from './pages/About';
+import StoreSelector from './pages/StoreSelector';
+
+
+
+
 
 function App() {
   return (
@@ -21,26 +24,23 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" exact Component={SignUp}/>
-           <Route path="/Login" Component={Login} /> 
-          <Route path="/Home" Component={Home} />  
-          <Route path="/UpdatePassword" Component={UpdatePassword} /> 
-          <Route path="/BuildingList" Component={BuildingList} /> 
-          <Route path="/StoreSelector" Component={StoreSelector} /> 
-          <Route path="/Categories" Component={Categories} />   
-          <Route path="/About" Component={About} />   
-          <Route path="/ProductDetails/:companyStoreProductId" Component={ProductDetails} />  
-          <Route path="/Compare" Component={Compare} />   
-          <Route path="/Main" Component={Main} />   
+          <Route path="/categories/:addressId" element={<Categories />} />
+          <Route path="/" exact Component={SignUp} />
+          <Route path="/login" Component={Login} />
+          <Route path="/home" Component={Home} />
+          <Route path="/update_password" Component={UpdatePassword} />
+          <Route path="/building_list" Component={BuildingList} />
+          <Route path="/store_selector" Component={StoreSelector} />
+          <Route path="/about" Component={About} />
+          <Route path="/ProductDetails/:companyStoreProductId" Component={ProductDetails} /> 
+          <Route path="/Compare" Component={Compare} />
+          <Route path="/Main" Component={Main} />
+          <Route path="/BuildingList" Component={BuildingList} />
         </Routes>
       </Router>
-      <label htmlFor=""></label>
-      <label htmlFor=""></label>
-      <label htmlFor=""></label>
       <Footer />
     </div>
   );
 }
 
 export default App;
-
