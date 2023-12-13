@@ -15,6 +15,8 @@ const ProductDetails = () => {
   const { companyStoreProductId } = useParams();
   const [product, setProduct] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [addToCartSuccess, setAddToCartSuccess] = useState(false);
   const token = localStorage.getItem("token");
 
   const fetchProductData = async (companyStoreProductId) => {
@@ -67,17 +69,17 @@ const ProductDetails = () => {
         },
         body: JSON.stringify({ companyStoreProductId }),
       });
-  
+
       if (!response.ok) {
         throw new Error(`Failed to add to favorites: ${response.status}`);
       }
-  
+
       console.log('Added to favorites successfully!');
     } catch (error) {
       console.error('Error adding to favorites:', error.message);
     }
   };
-  
+
   const removeFromFavorites = async (companyStoreProductId) => {
     try {
       const response = await fetch('http://localhost:8080/api/favorites/products', {
@@ -88,17 +90,17 @@ const ProductDetails = () => {
         },
         body: JSON.stringify({ companyStoreProductId }),
       });
-  
+
       if (!response.ok) {
         throw new Error(`Failed to remove from favorites: ${response.status}`);
       }
-  
+
       console.log('Removed from favorites successfully!');
     } catch (error) {
       console.error('Error removing from favorites:', error.message);
     }
   };
-  
+
   const handleToggleFavorite = async () => {
     try {
       if (!product) {
@@ -123,8 +125,6 @@ const ProductDetails = () => {
       setIsFavorite((prevIsFavorite) => !prevIsFavorite);
     }
   };
-
-  const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (value) => {
     const newQuantity = Math.max(quantity + value, 1);
@@ -164,9 +164,12 @@ const ProductDetails = () => {
 
       // Handle the success case
       console.log('Product added to the list successfully!');
+      setAddToCartSuccess(true);
 
-      // Navigate to the Categories page
-      navigate('/Categories');
+      // Navigate to the Categories page after a delay (for demo purposes)
+      setTimeout(() => {
+        navigate('/Categories');
+      }, 2000); // Delay for 2 seconds
     } catch (error) {
       console.error('Error adding product to the list:', error.message);
     }
@@ -230,6 +233,12 @@ const ProductDetails = () => {
             />
           </div>
 
+          {addToCartSuccess && (
+             <div className="success-message" style={{ color: 'red' }}>
+              Product successfully added to the list!
+            </div>
+          )}
+
           <div className="button-container">
             <button className="add-to-list" onClick={handleAddToList}>
               Add to List
@@ -245,6 +254,8 @@ const ProductDetails = () => {
               {isFavorite ? " Remove from Favorites" : " Add to Favorites"}
             </button>
           </div>
+
+          
         </div>
       </div>
     </div>

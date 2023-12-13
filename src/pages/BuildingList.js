@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/BuildingList.css";
 
 export const BuildingList = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [trip, setTrip] = useState(null);
+  const inputRefs = useRef({});
 
   useEffect(() => {
     const fetchBuildingListData = async () => {
@@ -21,7 +22,7 @@ export const BuildingList = () => {
         if (!response.ok) {
           throw new Error(`Server error: ${response.status}`);
         }
-        
+
         const data = await response.json();
         setTrip(data);
 
@@ -44,46 +45,43 @@ export const BuildingList = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ shoppingListId, shoppingListProductId, quantity}),
+        body: JSON.stringify({ shoppingListId, shoppingListProductId, quantity }),
       });
   
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
   
-      // Parse the JSON response
-      const updatedProduct = await response.json();
-  
- 
-       console.log('Product updated successfully!');
+      // Instead of expecting JSON, just log the success message
+      console.log('Product updated successfully!');
+      
     } catch (error) {
       console.error('Error updating product:', error.message);
     }
   };
   
-  
+
   const handleDelete = async (shoppingListId, shoppingListProductId, quantity) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/shoppinglist/products`, {
-        method: 'DELETE',
+      const response = await fetch(`http://localhost:8080/api/shoppinglist/delete`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ shoppingListId, shoppingListProductId, quantity}),
+        body: JSON.stringify({ shoppingListId, shoppingListProductId, quantity }),
       });
-  
+
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
-  
+
       console.log('Product deleted successfully!');
     } catch (error) {
       console.error('Error deleting product:', error.message);
     }
   };
-  
-  
+
   return (
     <div className="bg-white row mx-auto w-75 p-3" style={{ marginTop: '20px' }}>
       {trip ? (
@@ -101,10 +99,10 @@ export const BuildingList = () => {
                 <thead>
                   <tr>
                     <th></th>
-                    <th class="text-start">Name</th>
-                    <th class="text-center">Price</th>
-                    <th class="text-center">Quantity</th>
-                    <th class="text-center">Total</th>
+                    <th className="text-start">Name</th>
+                    <th className="text-center">Price</th>
+                    <th className="text-center">Quantity</th>
+                    <th className="text-center">Total</th>
                     <th></th>
                     <th></th>
                   </tr>
@@ -113,32 +111,34 @@ export const BuildingList = () => {
                   {shoppingList.shoppingListProductResponseList.map((product) => (
                     <tr key={product.id}>
                       <td><img src={product.productImage} alt={product.productName} className="product-image" /></td>
-                      <td class="text-start align-items-end">{product.productName}</td>
-                      <td class="text-center align-items-end">${product.price}</td>
-                      <td class="text-center align-items-end"><input class="text-end" defaultValue={product.quantity}></input></td>
-                      <td class="text-center align-items-end">${product.total}</td>
-                      <td class="text-center align-items-end">
-                      <input
-                        type="button"
-                        value="UPDATE"
-                        onClick={() => {
-                          const newQuantity = product.quantity;
-                          if (newQuantity !== null) {
-                            handleUpdate(product.id, newQuantity);
-                          }
-                        }}
-                      />
-                      </td>
-                      <td class="text-center align-items-end">
+                      <td className="text-start align-items-end">{product.productName}</td>
+                      <td className="text-center align-items-end">${product.price}</td>
+                      <td className="text-center align-items-end">
                         <input
-                          type="button"
-                          value="DELETE"
+                          type="number"
+                          ref={(ref) => (inputRefs.current[product.id] = ref)}
+                          defaultValue={product.quantity}
+                          className="text-end"
+                        />
+                      </td>
+                      <td className="text-center align-items-end">${product.total}</td>
+                      <td className="text-center align-items-end">
+                        <button
+                          onClick={() => handleUpdate(shoppingList.shoppingListId, product.id,  parseInt(inputRefs.current[product.id].value, 10))}
+                        >
+                          UPDATE
+                        </button>
+                      </td>
+                      <td className="text-center align-items-end">
+                        <button
                           onClick={() => {
                             if (window.confirm('Are you sure you want to delete this product?')) {
-                              handleDelete(product.id);
+                              handleDelete(shoppingList.shoppingListId, product.id,  parseInt(inputRefs.current[product.id].value, 10));
                             }
                           }}
-                        />
+                        >
+                          DELETE
+                        </button>
                       </td>
                     </tr>
                   ))}
