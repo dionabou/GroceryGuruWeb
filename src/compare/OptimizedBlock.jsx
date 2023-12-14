@@ -1,56 +1,95 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SelectButton } from "./SelectButton";
 import "../styles/OptimizedBlock.css";
 
-export const OptimizedBlock = ({ className }) => {
+const OptimizedBlock = ({ className, totalValue, onSelect }) => {
+  const [optimizedData, setOptimizedData] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/trips/compare', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (response.status === 401) {
+          setError("Unauthorized access. Please log in.");
+          return;
+        }
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await response.json();
+        const higherIdData = data.find((optimized) => optimized.id === 2);
+
+        setOptimizedData(higherIdData ? [higherIdData] : []);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError("Error fetching data. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
+
   return (
     <div className={`optimized-block ${className}`}>
-      <div className="text-wrapper-35">9.78</div>
-      <div className="text-wrapper-36">9.78</div>
-      <div className="text-wrapper-37">1</div>
-      <div className="text-wrapper-38">1</div>
-      <div className="text-wrapper-39">Qty</div>
-      <div className="text-wrapper-40">Total</div>
-      <div className="text-wrapper-41">Price</div>
-      <div className="text-wrapper-42">Product</div>
-      <p className="text-wrapper-43">Location: 123 Meadow Lane, Cincinnati, OH 45203</p>
-      <div className="text-wrapper-44">Store: Kroger</div>
-      <p className="text-wrapper-45">Meijer 100% All Natural Boneless Skinless Chicken Breasts with Rib Meat</p>
-      <p className="text-wrapper-46">Location: 16 Crutch St, Cincinnati, OH 45203</p>
-      <div className="text-wrapper-47">Store: Meijer</div>
-      <div className="text-wrapper-48">Qty</div>
-      <div className="text-wrapper-49">Total</div>
-      <div className="text-wrapper-50">Price</div>
-      <div className="overlap">
-        <div className="text-wrapper-51">Product</div>
-        <img className="meijerchick" alt="Meijerchick" src="/img/meijerchick-1.png" />
-      </div>
-      <div className="text-wrapper-52">1.79</div>
-      <img className="img" alt="Malk" src="/img/malk-1.png" />
-      <div className="text-wrapper-53">1</div>
-      <p className="text-wrapper-54">Kroger® 2% Reduced Fat Milk</p>
-      <div className="text-wrapper-55">1.79</div>
-      <div className="text-wrapper-56">36 minutes</div>
-      <div className="text-wrapper-57">Travel Time:</div>
-      <div className="text-wrapper-58">3.00</div>
-      <div className="text-wrapper-59">Gas Cost</div>
-      <div className="text-wrapper-60">Tax</div>
-      <div className="text-wrapper-61">Subtotal</div>
-      <img className="line-2" alt="Line" src="/img/line-2.svg" />
-      <div className="text-wrapper-62">14.63</div>
-      <div className="text-wrapper-63">1.14</div>
-      <div className="text-wrapper-64">1</div>
-      <div className="text-wrapper-65">1.37</div>
-      <div className="text-wrapper-66">1.37</div>
-      <div className="text-wrapper-67">Broccoli Crowns</div>
-      <img className="broc-2" alt="Broc" src="/img/broc-1.png" />
-      <img className="meijeregg" alt="Meijeregg" src="/img/meijeregg-1.png" />
-      <p className="text-wrapper-68">Meijer Cage Free Grade A Large Eggs, Dozen</p>
-      <div className="text-wrapper-69">1.69</div>
-      <div className="text-wrapper-70">1.69</div>
-      <SelectButton className="select-button-instance" />
-      <div className="text-wrapper-71">Total</div>
-      <div className="text-wrapper-72">18.77</div>
+      {optimizedData.map((optimized) => (
+        <div key={optimized.id}>
+          <div className="text-wrapper-3">Total</div>
+          <div className="text-wrapper-4">{optimized.totalTravelTime}</div>
+
+          {optimized.shoppingLists.map((shoppingList) => (
+            <div key={shoppingList.shoppingListId}>
+              <div>Store: {shoppingList.companyStore}</div>
+              <div>Address: {shoppingList.companyStoreAddress}</div>
+
+              {shoppingList.shoppingListProductResponseList.map((product) => (
+                <div key={product.id}>
+                  <div>{product.productName}</div>
+                  <div>Quantity: {product.quantity}</div>
+                  <div>Price: {product.price}</div>
+                  <div>Total: {product.total}</div>
+                  <img src={product.productImage} alt={product.productName} style={{ maxWidth: "100px" }} />
+                </div>
+              ))}
+
+              <div>Grocery Cost: {shoppingList.groceryCost}</div>
+            </div>
+          ))}
+
+          <div className="overlap-group-wrapper">
+            <div className="overlap-group">
+              <div className="rectangle" />
+              <div className="text-wrapper-32">Select</div>
+              <Link to={`../Main?tripId=${optimized.id}`} className="select-link">
+                <SelectButton onClick={() => onSelect("Optimized")} className="select-button-instance" />
+              </Link>
+            </div>
+          </div>
+          
+          <div className="text-wrapper-33">Grand Total: {optimized.grandTotal}</div>
+          <div className="text-wrapper-81">Total Gas Cost: {optimized.totalGasCost}</div>
+          <div className="text-wrapper-82">Total Grocery Cost: {optimized.totalGroceryCost}</div>
+        </div>
+      ))}
     </div>
   );
 };
+
+export { OptimizedBlock };

@@ -1,52 +1,104 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { SelectButton } from "./SelectButton";
 import "../styles/UserCreatedBlock.css";
 
-export const UserCreatedBlock = ({ className }) => {
+const UserCreatedBlock = ({ className, totalValue, onSelect }) => {
+  const [tripInfo, setTripInfo] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+
+    if (!storedToken) {
+      setError("Access token not found. Please log in.");
+      return;
+    }
+
+    const fetchTripInfo = async () => {
+      try {
+        const response = await fetch(`/api/trips/compare`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${storedToken}`,
+          },
+        });
+
+        if (response.status === 401) {
+          setError("Unauthorized access. Please log in.");
+          return;
+        }
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch trip info");
+        }
+
+        const data = await response.json();
+        const lowerIdData = data.find((trip) => trip.id === 1);
+
+        setTripInfo(lowerIdData ? [lowerIdData] : []);
+      } catch (error) {
+        console.error("Error fetching trip info:", error);
+        setError("Error fetching trip info. Please try again later.");
+      }
+    };
+
+    fetchTripInfo();
+  }, []);
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
+
   return (
     <div className={`user-created-block ${className}`}>
-      <div className="text-wrapper-3">Total</div>
-      <div className="text-wrapper-4">26 minutes</div>
-      <div className="text-wrapper-5">Travel Time:</div>
-      <div className="text-wrapper-6">2.00</div>
-      <div className="text-wrapper-7">Gas Cost</div>
-      <div className="text-wrapper-8">Tax</div>
-      <div className="text-wrapper-9">Subtotal</div>
-      <img className="chick" alt="Chick" src="/img/chick-1.png" />
-      <div className="text-wrapper-10">1.79</div>
-      <img className="malk" alt="Malk" src="/img/malk-1.png" />
-      <p className="heritage-farm">Heritage Farm® Boneless &amp; Skinless Chicken Breasts with Rib Meat</p>
-      <div className="text-wrapper-11">1</div>
-      <p className="p">Kroger® 2% Reduced Fat Milk</p>
-      <img className="egg" alt="Egg" src="/img/egg-1.png" />
-      <div className="text-wrapper-12">3.98</div>
-      <div className="text-wrapper-13">1.99</div>
-      <p className="text-wrapper-14">Kroger® Grade A Large White Eggs</p>
-      <div className="text-wrapper-15">2</div>
-      <div className="text-wrapper-16">Qty</div>
-      <div className="text-wrapper-17">Total</div>
-      <div className="text-wrapper-18">Price</div>
-      <div className="text-wrapper-19">Product</div>
-      <p className="text-wrapper-20">Location: 123 Meadow Lane, Cincinnati, OH 45203</p>
-      <div className="text-wrapper-21">Store: Kroger</div>
-      <div className="text-wrapper-22">1.79</div>
-      <div className="text-wrapper-23">1</div>
-      <div className="text-wrapper-24">1</div>
-      <div className="text-wrapper-25">14.14</div>
-      <div className="text-wrapper-26">1.37</div>
-      <div className="text-wrapper-27">1.37</div>
-      <div className="text-wrapper-28">14.14</div>
-      <img className="line" alt="Line" src="/img/line-1.svg" />
-      <div className="text-wrapper-29">19.91</div>
-      <div className="text-wrapper-30">1.55</div>
-      <div className="text-wrapper-31">Broccoli Crowns</div>
-      <img className="broc" alt="Broc" src="/img/broc-1.png" />
-      <div className="overlap-group-wrapper">
-        <div className="overlap-group">
-          <div className="rectangle" />
-          <div className="text-wrapper-32">Select</div>
+      {tripInfo.map((trip) => (
+        <div key={trip.id}>
+          <div className="text-wrapper-3">Total</div>
+          <div className="text-wrapper-4">{trip.totalTravelTime}</div>
+
+          {/* Render shopping lists for each trip */}
+          {trip.shoppingLists.map((shoppingList) => (
+            <div key={shoppingList.shoppingListId}>
+              <div>Store: {shoppingList.companyStore}</div>
+              <div>Address: {shoppingList.companyStoreAddress}</div>
+
+              {/* Render products for each shopping list */}
+              {shoppingList.shoppingListProductResponseList.map((product) => (
+                <div key={product.id}>
+                  <div>{product.productName}</div>
+                  <div>Quantity: {product.quantity}</div>
+                  <div>Price: {product.price}</div>
+                  <div>Total: {product.total}</div>
+                  {/* Include product image */}
+                  <img src={product.productImage} alt={product.productName} style={{ maxWidth: "100px" }} />
+                </div>
+              ))}
+
+              <div>Grocery Cost: {shoppingList.groceryCost}</div>
+            </div>
+          ))}
+          
+          {/* Render other components using trip properties */}
+          <div className="overlap-group-wrapper">
+            <div className="overlap-group">
+              <div className="rectangle" />
+              <div className="text-wrapper-32">Select</div>
+              {/* Wrap the SelectButton with Link for navigation */}
+              <Link to={`../Main?tripId=${trip.id}`} className="select-link">
+                <SelectButton onClick={() => onSelect("UserCreated")} className="select-button-instance" />
+              </Link>
+            </div>
+          </div>
+          
+          <div className="text-wrapper-33">Grand Total: {trip.grandTotal}</div>
+          <div className="text-wrapper-81">Total Gas Cost: {trip.totalGasCost}</div>
+          <div className="text-wrapper-82">Total Grocery Cost: {trip.totalGroceryCost}</div>
         </div>
-      </div>
-      <div className="text-wrapper-33">23.46</div>
+      ))}
     </div>
   );
 };
+
+export { UserCreatedBlock };

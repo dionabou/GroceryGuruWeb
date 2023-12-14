@@ -33,6 +33,7 @@ function App() {
             <Route path="/home" Component={Home} />
             <Route path="/update_password" Component={UpdatePassword} />
             <Route path="/building_list" Component={BuildingList} />
+          <Route path="/Main" Component={Main} />
             <Route path="/store_selector" Component={StoreSelector} />
             <Route path="/about" Component={About} />
             <Route path="/favorites" Component={Favorites} />
