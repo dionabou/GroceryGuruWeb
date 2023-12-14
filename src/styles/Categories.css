@@ -9,16 +9,18 @@
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Heading styles */
-h2 {
+    position: relative;
+  }
+  
+  /* Heading styles */
+  h2 {
     font-size: 28px;
     margin-bottom: 20px;
     color: #333;
-}
-
-h3 {
+  }
+  
+  /* Category and subcategory styles */
+  h3, h4 {
     font-size: 24px;
     margin-bottom: 10px;
     color: #333;
@@ -28,21 +30,21 @@ h3 {
     padding: 10px;
     border-radius: 8px;
     transition: box-shadow 0.3s;
-}
-
-/* List styles */
-ul {
+  }
+  
+  /* List styles */
+  ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-li {
+  }
+  
+  li {
     margin-bottom: 12px;
-}
-
-/* Filter button styles */
-button {
+  }
+  
+  /* Filter button styles */
+  button {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -55,16 +57,16 @@ button {
     color: #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s, color 0.3s;
-}
-
-button.active {
+  }
+  
+  button.active {
     box-shadow: 0 4px 8px rgba(46, 204, 113, 0.5);
     color: #fff;
     background-color: #2ecc71;
-}
-
-/* Image styles */
-img {
+  }
+  
+  /* Image styles */
+  img {
     max-width: 50%;
     height: auto;
     display: block;
@@ -73,46 +75,43 @@ img {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
-}
-
-/* Hover effect for images */
-img:hover {
+  }
+  
+  /* Hover effect for images */
+  img:hover {
     transform: scale(1.05);
-}
-
-/* Category and subcategory styles */
-li > h3, li > h4 {
-    font-size: 20px;
-    margin-bottom: 8px;
-    color: #333;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: 8px;
-    transition: box-shadow 0.3s;
-}
-
-li > h3:hover, li > h4:hover {
-    box-shadow: 0 4px 8px rgba(46, 204, 113, 0.5);
-}
-
-/* Nested subcategories */
-li > ul > li > h4 {
-    font-size: 18px;
-    margin-bottom: 6px;
-    color: #333;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 8px;
-    border-radius: 8px;
-    transition: box-shadow 0.3s;
-}
-
-li > ul > li > h4:hover {
-    box-shadow: 0 2px 4px rgba(46, 204, 113, 0.5);
-}
-
-/* Adjusted indentation for nested subcategories */
-ul ul {
+  }
+  
+  /* Nested subcategories */
+  ul ul {
     margin-left: 20px;
-}
+  }
+  
+  /* Navigation buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; /* Add margin to separate from categories */
+  }
+  
+  .back-button,
+  .next-button {
+    padding: 8px 16px; /* Adjust button size */
+    font-size: 16px; /* Adjust font size */
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .next-button {
+    margin-left: auto; /* Move next button to the right by pushing it to the end */
+  }
+  
+  .back-button:hover,
+  .next-button:hover {
+    background-color: darkblue;
+  }
+  

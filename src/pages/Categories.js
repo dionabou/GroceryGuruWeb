@@ -175,7 +175,7 @@ const Categories = () => {
                                 .map((product) => (
                                   <li key={product.id}>
                                     {/* Use Link to navigate to product details page with productId */}
-                                    <Link to={`/product-details/${product.id}`}>
+                                    <Link to={`/ProductDetails/${product.id}`}>
                                       <div>
                                         <p>Name: {product.name}</p>
                                         <p>Price: {product.price}</p>
@@ -195,8 +195,17 @@ const Categories = () => {
           </li>
         ))}
       </ul>
+
+      {/* Back and Next buttons */}
+      <div className="navigation-buttons">
+        <Link to="/store_selector">
+          <button className="back-button">Back</button>
+        </Link>
+        <Link to="/building_list">
+          <button className="next-button">Next</button>
+        </Link>
+      </div>
     </div>
   );
 };
-
 export default Categories;

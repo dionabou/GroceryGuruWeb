@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { BuildingList } from './pages/BuildingList';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import { ProductDetails } from './pages/ProductDetails';
+import  ProductDetails  from './pages/ProductDetails';
 import SignUp from './pages/SignUp';
 import UpdatePassword from './pages/UpdatePassword';
 import { Main } from './ShoppingList/Main';
@@ -32,6 +32,10 @@ function App() {
           <Route path="/building_list" Component={BuildingList} />
           <Route path="/store_selector" Component={StoreSelector} />
           <Route path="/about" Component={About} />
+          <Route path="/ProductDetails/:companyStoreProductId" Component={ProductDetails} /> 
+          <Route path="/Compare" Component={Compare} />
+          <Route path="/Main" Component={Main} />
+          <Route path="/BuildingList" Component={BuildingList} />
         </Routes>
       </Router>
       <Footer />
