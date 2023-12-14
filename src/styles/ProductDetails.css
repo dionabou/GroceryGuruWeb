@@ -1,253 +1,173 @@
+/* ProductDetails.css */
+
 .product-details {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+  background-color: #f9f9f9;
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
 
-  }
+.image-container {
+  margin-top: 100px;
+  width: 250px;
+ 
 
-  
-  
-  .product-details .div-2 {
-    background-color: #ffffff;
-    height: 1024px;
-    position: relative;
-    width: 1440px;
-  }
-  
-  .product-details .nav-bar-instance {
-    left: 0 !important;
-    position: absolute !important;
-    top: 0 !important;
-  }
-  
-  .product-details .image {
-    height: 500px;
-    left: 160px;
-    object-fit: cover;
-    position: absolute;
-    top: 231px;
-    width: 500px;
-  }
-  
-  .product-details .overlap {
-    height: 584px;
-    left: 720px;
-    position: absolute;
-    top: 269px;
-    width: 557px;
-  }
-  
-  .product-details .kroger-reduced-fat {
-    color: #000000;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    left: 0;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 0;
-    width: 547px;
-  }
-  
-  .product-details .select-button {
-    height: 45px;
-    left: 257px;
-    position: absolute;
-    top: 539px;
-    width: 300px;
-  }
-  
-  .product-details .overlap-group {
-    height: 49px;
-    position: relative;
-    top: -4px;
-  }
-  
-  .product-details .rectangle {
-    background-color: #054fb9;
-    border-radius: 15px;
-    height: 45px;
-    left: 0;
-    position: absolute;
-    top: 4px;
-    width: 300px;
-  }
-  
-  .product-details .frame {
-    align-items: center;
-    display: inline-flex;
-    gap: 10px;
-    justify-content: center;
-    left: 36px;
-    padding: 10px;
-    position: absolute;
-    top: 0;
-  }
-  
-  .product-details .text-wrapper-3 {
-    color: #ffffff;
-    font-family: "Lato-ExtraBold", Helvetica;
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 0;
-    line-height: normal;
-    margin-top: -1px;
-    position: relative;
-    width: fit-content;
-  }
+}
 
-  .product-details .text-wrapper-3 {
-    text-decoration: underline;
-  }
-  
-  .product-details .text-wrapper-4 {
-    color: #000000;
-    font-family: "Lato-ExtraBold", Helvetica;
-    font-size: 36px;
-    font-weight: 800;
-    left: 160px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 182px;
-    width: 279px;
-  }
-  
-  .product-details .p {
-    color: #000000;
-    font-family: "Lato-ExtraBold", Helvetica;
-    font-size: 24px;
-    font-weight: 800;
-    left: 720px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 192px;
-    width: 557px;
-  }
-  
-  .product-details .overlap-group-wrapper {
-    height: 45px;
-    left: 110px;
-    position: absolute;
-    top: 808px;
-    width: 300px;
-  }
-  
-  .product-details .div-wrapper {
-    align-items: center;
-    display: inline-flex;
-    gap: 10px;
-    justify-content: center;
-    left: 81px;
-    padding: 10px;
-    position: absolute;
-    top: 0;
-  }
-  
-  .product-details .overlap-2 {
-    background-color: #ffffff;
-    border: 1px solid;
-    border-color: #000000;
-    height: 31px;
-    left: 187px;
-    position: absolute;
-    top: 772px;
-    width: 52px;
-  }
-  
-  .product-details .text-wrapper-5 {
-    color: #000000;
-    font-family: "Lato-ExtraBold", Helvetica;
-    font-size: 12px;
-    font-weight: 800;
-    left: 9px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 5px;
-    width: 33px;
-  }
-  
-  .product-details .text-wrapper-6 {
-    color: #000000;
-    font-family: "Lato-ExtraBold", Helvetica;
-    font-size: 24px;
-    font-weight: 800;
-    left: 117px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 772px;
-    white-space: nowrap;
-    width: 38px;
-  }
-  
-  .product-details .overlap-3 {
-    background-color: #d9d9d9;
-    box-shadow: 0px 4px 4px #00000040;
-    height: 20px;
-    left: 163px;
-    position: absolute;
-    top: 778px;
-    width: 20px;
-  }
-  
-  .product-details .text-wrapper-7 {
-    color: #000000;
-    font-family: "Lato-ExtraBold", Helvetica;
-    font-size: 12px;
-    font-weight: 800;
-    left: 8px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 2px;
-    white-space: nowrap;
-  }
-  
-  .product-details .overlap-4 {
-    background-color: #d9d9d9;
-    box-shadow: 0px 4px 4px #00000040;
-    height: 20px;
-    left: 243px;
-    position: absolute;
-    top: 778px;
-    width: 20px;
-  }
-  
-  .product-details .back-button {
-    height: 30px;
-    left: 160px;
-    position: absolute;
-    top: 112px;
-    width: 83px;
-  }
-  
-  .product-details .go-back-wrapper {
-    background-color: #054fb9;
-    border-radius: 15px;
-    box-shadow: 0px 4px 4px #00000040;
-    height: 30px;
-    position: relative;
-    width: 81px;
-  }
-  
-  .product-details .go-back {
-    color: #ffffff;
-    font-family: "Lato-ExtraBold", Helvetica;
-    font-size: 12px;
-    font-weight: 800;
-    left: 5px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 7px;
-    width: 71px;
-  }
-  
+.image {
+  height: 200px;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 600px; /* Adjust the max-width as needed */
+  width: 100%;
+}
+
+.product-details .details-button {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 200px;
+}
+
+.product-details .go-back {
+  background-color: darkblue;
+  color: #ffffff;
+  font-family: "Lato-ExtraBold", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 200px;
+}
+
+.product-details .go-back:hover {
+  background-color: #2980b9;
+}
+
+.product-details .product-description {
+  color: #333333;
+  font-family: "Inter-Regular", Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 70px;
+}
+
+.product-details .quantity-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 00px;
+}
+
+.product-details .decrement,
+.product-details .increment {
+  background-color: #d9d9d9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  color: #333333;
+  cursor: pointer;
+  font-family: "Lato-ExtraBold", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 10px;
+  margin: 0 5px;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.product-details .quantity {
+  font-family: "Lato-ExtraBold", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 5px;
+}
+
+.product-details .increment:hover,
+.product-details .decrement:hover {
+  background-color: #b3b3b3;
+}
+
+.product-details .button-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+/* Switched positions of Continue Shopping and Add to List buttons */
+.product-details .add-to-list,
+.product-details .continue-shopping {
+  background-color: darkblue;
+  color: #ffffff;
+  font-family: "Lato-ExtraBold", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.product-details .add-to-list:hover,
+.product-details .continue-shopping:hover {
+  background-color: #2980b9;
+}
+
+.details-container {
+  max-width: 800px; /* Adjust the maximum width as needed */
+  margin: 0 auto;   /* Center the container */
+  border-radius: 100px;
+}
+
+
+.paged-title {
+  font-family: 'Algerian', sans-serif; /* Apply Algerian font */
+  font-size: 48px; /* Increase font size to make it bigger */
+  margin-top: 5px; /* Add margin at the bottom of the title */
+  margin-bottom: 5px;
+  text-align: center; /* Center the text horizontally */
+  margin-left: 159px;
+}
+
+
+.product-details .quantity-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.product-details .quantity {
+  font-family: "Lato-ExtraBold", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  width: 60px; /* Adjust the width as needed */
+  margin: 0 10px; /* Add margin to separate from the buttons */
+}
+
+.quantity-box .quantity-label {
+  color: #333333;
+  font-family: "Inter-Regular", Helvetica, sans-serif;
+  font-size: 18px;
+  margin-left: 58px;
+}
+
+/* Add to Favorites Button */
+.add-to-favorites {
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  color: whitesmoke; /* Color for the empty heart */
+}
+
+.add-to-favorites.favorited {
+  color: red; /* Color for the filled heart */
+}
