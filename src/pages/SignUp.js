@@ -120,9 +120,10 @@ const SignUp = () => {
     <div>
       <h1 className="page-title">Welcome to Groceryguru</h1>
       <div className="signup-container">
-        <div className="SignUp-form">
+        <div className="SignUp-form col p-3">
           <h2>Sign Up or Sign In to Get Started</h2>
           <form onSubmit={handleSubmit}>
+            <div class="row mb-2">
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -131,7 +132,8 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -140,7 +142,8 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="streetAddress">Street Address</label>
             <input
               type="text"
@@ -149,7 +152,8 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="zipcode">ZIP Code</label>
             <input
               type="text"
@@ -159,7 +163,8 @@ const SignUp = () => {
               required
             />
             {!validZipcode && <small className="error-message">Please enter a valid ZIP code</small>}
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="make">Car Make</label>
             <input
               type="text"
@@ -168,7 +173,8 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="model">Car Model</label>
             <input
               type="text"
@@ -177,7 +183,8 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="year">Car Year</label>
             <input
               type="text"
@@ -188,7 +195,8 @@ const SignUp = () => {
               pattern="\d{4}"
             />
             <small>Enter a valid four-digit year (e.g., 2022)</small>
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="mpg">Car MPG</label>
             <input
               type="text"
@@ -199,7 +207,8 @@ const SignUp = () => {
               pattern="\d+(\.\d{1,2})?"
             />
             <small>Enter a valid MPG (e.g., 25 or 30.5)</small>
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="userTimeValue">How much you value your time ($/hr)</label>
             <input
               type="text"
@@ -209,7 +218,8 @@ const SignUp = () => {
               required
               pattern="\d+(\.\d{1,2})?"
             />
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -218,7 +228,8 @@ const SignUp = () => {
               onChange={handleChange}
               required
             />
-
+            </div>
+            <div class="row mb-2">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
@@ -228,6 +239,7 @@ const SignUp = () => {
               required
             />
             {!passwordMatch && <small className="error-message">Passwords do not match</small>}
+            </div>
             <label htmlFor=" "></label>
             <button type="submit">Create Account</button>
           </form>

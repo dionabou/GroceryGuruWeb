@@ -59,9 +59,9 @@ function Login() {
   return (
     <div className="login-container">
       <h1 className="page-title">Welcome Back to Groceryguru</h1>
-      <div className="login-form">
+      <div className="login-form w-50">
         <h2>Sign In</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} class="w-100">
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input

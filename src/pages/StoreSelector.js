@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import '../styles/StoreSelector.css';
 
 function StoreSelector() {
@@ -23,15 +22,20 @@ function StoreSelector() {
   useEffect(() => {
     const fetchDropdownContent = async () => {
       try {
-        const response = await axios.get('/api/stores/');
-
-        if (!response.data || response.data.length === 0) {
+        const response = await fetch('http://localhost:8080/api/stores/');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const data = await response.json();
+    
+        if (!data || data.length === 0) {
           console.error('No content available for stores.');
           return;
         }
-
+    
         setDropdownContent(
-          response.data.reduce((acc, company) => {
+          data.reduce((acc, company) => {
             if (company.companyStores && Array.isArray(company.companyStores)) {
               acc[company.companyName] = company.companyStores;
             } else {
@@ -40,14 +44,14 @@ function StoreSelector() {
             return acc;
           }, {})
         );
-
+    
         setLoading(false); // Set loading to false after fetching data
       } catch (error) {
         console.error('Error fetching dropdown content:', error);
         setError('Error fetching data. Please try again.'); // Set the error state
         setLoading(false); // Set loading to false after an error
       }
-    };
+    }
 
     fetchDropdownContent();
   }, []);
