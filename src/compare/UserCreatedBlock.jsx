@@ -3,28 +3,25 @@ import { Link } from "react-router-dom";
 import { SelectButton } from "./SelectButton";
 import "../styles/UserCreatedBlock.css";
 
-const UserCreatedBlock = ({ className, selectButtonImage, totalValue }) => {
+const UserCreatedBlock = ({ className, totalValue, onSelect }) => {
   const [tripInfo, setTripInfo] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Retrieve the access token from localStorage
     const storedToken = localStorage.getItem("token");
 
-    // Check if a token is available
     if (!storedToken) {
       setError("Access token not found. Please log in.");
       return;
     }
 
-    // Fetch user-created trip info from the API
     const fetchTripInfo = async () => {
       try {
         const response = await fetch(`/api/trips/compare`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${storedToken}`, // Use the stored token
+            'Authorization': `Bearer ${storedToken}`,
           },
         });
 
@@ -38,7 +35,9 @@ const UserCreatedBlock = ({ className, selectButtonImage, totalValue }) => {
         }
 
         const data = await response.json();
-        setTripInfo(data);
+        const lowerIdData = data.find((trip) => trip.id === 1);
+
+        setTripInfo(lowerIdData ? [lowerIdData] : []);
       } catch (error) {
         console.error("Error fetching trip info:", error);
         setError("Error fetching trip info. Please try again later.");
@@ -46,7 +45,7 @@ const UserCreatedBlock = ({ className, selectButtonImage, totalValue }) => {
     };
 
     fetchTripInfo();
-  }, []); // Empty dependency array since we only want to run this effect once during component mount
+  }, []);
 
   if (error) {
     return <div className="error-message">{error}</div>;
@@ -74,10 +73,9 @@ const UserCreatedBlock = ({ className, selectButtonImage, totalValue }) => {
                   <div>Total: {product.total}</div>
                   {/* Include product image */}
                   <img src={product.productImage} alt={product.productName} style={{ maxWidth: "100px" }} />
-                  {/* Add more fields as needed */}
                 </div>
               ))}
-              
+
               <div>Grocery Cost: {shoppingList.groceryCost}</div>
             </div>
           ))}
@@ -88,12 +86,15 @@ const UserCreatedBlock = ({ className, selectButtonImage, totalValue }) => {
               <div className="rectangle" />
               <div className="text-wrapper-32">Select</div>
               {/* Wrap the SelectButton with Link for navigation */}
-              <Link to="../ShoppingList/Main" className="select-link">
-                <SelectButton className="select-button-instance" />
+              <Link to={`../Main?tripId=${trip.id}`} className="select-link">
+                <SelectButton onClick={() => onSelect("UserCreated")} className="select-button-instance" />
               </Link>
             </div>
           </div>
+          
           <div className="text-wrapper-33">Grand Total: {trip.grandTotal}</div>
+          <div className="text-wrapper-81">Total Gas Cost: {trip.totalGasCost}</div>
+          <div className="text-wrapper-82">Total Grocery Cost: {trip.totalGroceryCost}</div>
         </div>
       ))}
     </div>

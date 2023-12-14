@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { SelectButton } from "./SelectButton";
 import "../styles/OptimizedBlock.css";
 
-const OptimizedBlock = ({ className, selectButtonImage, totalValue }) => {
+const OptimizedBlock = ({ className, totalValue, onSelect }) => {
   const [optimizedData, setOptimizedData] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +29,9 @@ const OptimizedBlock = ({ className, selectButtonImage, totalValue }) => {
         }
 
         const data = await response.json();
-        setOptimizedData(data);
+        const higherIdData = data.find((optimized) => optimized.id === 2);
+
+        setOptimizedData(higherIdData ? [higherIdData] : []);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError("Error fetching data. Please try again later.");
@@ -75,13 +77,15 @@ const OptimizedBlock = ({ className, selectButtonImage, totalValue }) => {
             <div className="overlap-group">
               <div className="rectangle" />
               <div className="text-wrapper-32">Select</div>
-              <Link to="../ShoppingList/Main" className="select-link">
-                <SelectButton className="select-button-instance" />
+              <Link to={`../Main?tripId=${optimized.id}`} className="select-link">
+                <SelectButton onClick={() => onSelect("Optimized")} className="select-button-instance" />
               </Link>
             </div>
           </div>
+          
           <div className="text-wrapper-33">Grand Total: {optimized.grandTotal}</div>
-          <div className="text-wrapper-81">{totalValue}</div>
+          <div className="text-wrapper-81">Total Gas Cost: {optimized.totalGasCost}</div>
+          <div className="text-wrapper-82">Total Grocery Cost: {optimized.totalGroceryCost}</div>
         </div>
       ))}
     </div>
