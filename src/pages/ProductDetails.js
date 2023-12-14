@@ -56,7 +56,7 @@ const ProductDetails = () => {
   }, [companyStoreProductId]);
 
   const handleGoBack = () => {
-    navigate("/BuildingList");
+    navigate(-1);
   };
 
   const addToFavorites = async (companyStoreProductId) => {
@@ -168,7 +168,7 @@ const ProductDetails = () => {
 
       // Navigate to the Categories page after a delay (for demo purposes)
       setTimeout(() => {
-        navigate('/Categories');
+        navigate(-1);
       }, 2000); // Delay for 2 seconds
     } catch (error) {
       console.error('Error adding product to the list:', error.message);
@@ -179,7 +179,7 @@ const ProductDetails = () => {
     <div className="details-container">
       <h1 className="paged-title">Product Details</h1>
       <div className="product-details">
-        <div className="back-button">
+        <div className="details-button">
           <button className="go-back" onClick={handleGoBack}>
             &lt; Go Back
           </button>
