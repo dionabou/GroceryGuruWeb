@@ -256,7 +256,7 @@ const SignUp = () => {
             <a href="/terms-of-service">Terms of Service</a>.
           </p>
           <p>
-            Already have an account? <a onClick={() => navigate("Login")}>Sign in</a>
+            Already have an account?  <a onClick={() => navigate("Login")} className="blue-link"> Sign in </a>
           </p>
         </div>
       </div>

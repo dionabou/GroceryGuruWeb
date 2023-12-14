@@ -18,7 +18,7 @@ function Navbar() {
         <Link to="/store_selector">Store Selector</Link>
         <Link to="/favorites">Favorite Products</Link>
         <Link to="/about">About</Link>
-        <Link to="/logout">Log Out</Link>
+        <Link to="/login">Log Out</Link>
       </nav>
     </header>
 

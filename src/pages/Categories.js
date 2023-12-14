@@ -133,7 +133,7 @@ const Categories = () => {
   }
 
   return (
-    <div className="container">
+    <div className="categories-container">
       <h2>Categories for Address ID: {addressId}</h2>
       <ul>
         {Object.entries(organizedCategories).map(([category, subcategories]) => (

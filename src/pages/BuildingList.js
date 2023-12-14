@@ -133,34 +133,9 @@ export const BuildingList = () => {
   };
 
   const handleShowList = async () => {
-    try {
-      setIsLoading(true); // Set loading to true on button click
-
-      const response = await fetch(`http://localhost:8080/api/trips/optimize_trip`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
-      }
-
-      console.log('Show list request successful!');
-
-      // Simulate loading for 30 seconds
-      setTimeout(() => {
-        setIsLoading(false); // Set loading to false after 30 seconds
-      }, 30000);
-
-      // Redirect to the main page if the request is successful
-      navigate("/main");
-    } catch (error) {
-      console.error('Error requesting show list:', error.message);
-      setIsLoading(false); // Set loading to false on error
-    }
+   
+      navigate(`/trips/${trip.id}`);
+   
   };
 
   return (
