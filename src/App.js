@@ -12,6 +12,7 @@ import UpdatePassword from './pages/UpdatePassword';
 import { BuildingList } from './pages/BuildingList';
 import Favorites from './pages/Favorites';
 import ShoppingList from './pages/ShoppingList';
+import NewTrip from './pages/NewTrip';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/store_selector" Component={StoreSelector} />
             <Route path="/about" Component={About} />
             <Route path="/favorites" Component={Favorites} />
+            <Route path="/newTrip" Component={NewTrip} />
           </Routes>
         </main>
       </Router>
