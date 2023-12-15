@@ -11,7 +11,7 @@ const OptimizedBlock = ({ className, totalValue, onSelect }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/trips/compare', {
+        const response = await fetch('http://localhost:8080/api/trips/compare', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -29,7 +29,9 @@ const OptimizedBlock = ({ className, totalValue, onSelect }) => {
         }
 
         const data = await response.json();
-        const higherIdData = data.find((optimized) => optimized.id === 2);
+        console.log(JSON.stringify(data, null, 2));
+        // const higherIdData = data.find((optimized) => optimized.id === 9);
+        const higherIdData = data[0].id > data[1].id ? data[0] : data[1];
 
         setOptimizedData(higherIdData ? [higherIdData] : []);
       } catch (error) {
@@ -74,13 +76,13 @@ const OptimizedBlock = ({ className, totalValue, onSelect }) => {
           ))}
 
           <div className="overlap-group-wrapper">
-            <div className="overlap-group">
-              <div className="rectangle" />
-              <div className="text-wrapper-32">Select</div>
-              <Link to={`../Main?tripId=${optimized.id}`} className="select-link">
+            {/* <div className="overlap-group"> */}
+              {/* <div className="rectangle" /> */}
+              {/* <div className="text-wrapper-32">Select</div> */}
+              <Link to={`/trips/${optimized.id}`} className="select-link">
                 <SelectButton onClick={() => onSelect("Optimized")} className="select-button-instance" />
               </Link>
-            </div>
+            {/* </div> */}
           </div>
           
           <div className="text-wrapper-33">Grand Total: {optimized.grandTotal}</div>

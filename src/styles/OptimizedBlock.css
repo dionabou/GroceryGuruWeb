@@ -2,7 +2,7 @@
   background-color: #abff9e; /* Keep the original green color */
   border-radius: 38px;
   box-shadow: -5px 5px 4px #00000040;
-  height: 750px; /* Adjust height if needed */
+  /* height: 750px; Adjust height if needed */
   position: relative;
   width: 650px;
   overflow: hidden; /* Ensure content doesn't overflow */

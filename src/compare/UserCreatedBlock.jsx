@@ -17,7 +17,7 @@ const UserCreatedBlock = ({ className, totalValue, onSelect }) => {
 
     const fetchTripInfo = async () => {
       try {
-        const response = await fetch(`/api/trips/compare`, {
+        const response = await fetch(`http://localhost:8080/api/trips/compare`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -35,7 +35,8 @@ const UserCreatedBlock = ({ className, totalValue, onSelect }) => {
         }
 
         const data = await response.json();
-        const lowerIdData = data.find((trip) => trip.id === 1);
+        // const lowerIdData = data.find((trip) => trip.id === 4);
+        const lowerIdData = data[0].id < data[1].id ? data[0] : data[1];
 
         setTripInfo(lowerIdData ? [lowerIdData] : []);
       } catch (error) {
@@ -82,14 +83,15 @@ const UserCreatedBlock = ({ className, totalValue, onSelect }) => {
           
           {/* Render other components using trip properties */}
           <div className="overlap-group-wrapper">
-            <div className="overlap-group">
-              <div className="rectangle" />
-              <div className="text-wrapper-32">Select</div>
+            {/* <div className="overlap-group"> */}
+              {/* <div className="rectangle" /> */}
+              {/* <div className="text-wrapper-32">Select</div> */}
               {/* Wrap the SelectButton with Link for navigation */}
-              <Link to={`../Main?tripId=${trip.id}`} className="select-link">
+              {/* <Link to={`../Main?tripId=${trip.id}`} className="select-link"> */}
+              <Link to={`/trips/${trip.id}`} className="select-link">
                 <SelectButton onClick={() => onSelect("UserCreated")} className="select-button-instance" />
               </Link>
-            </div>
+            {/* </div> */}
           </div>
           
           <div className="text-wrapper-33">Grand Total: {trip.grandTotal}</div>
