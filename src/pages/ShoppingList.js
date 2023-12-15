@@ -45,14 +45,15 @@ function ShoppingList() {
     fetchData();
   }, []);
 
-    const toggleSelectedRow = (productId) => {
+  const toggleSelectedRow = (productId) => {
     setSelectedRows((prevSelectedRows) => {
-        if (prevSelectedRows.includes(productId)) {
+      if (prevSelectedRows.includes(productId)) {
         return prevSelectedRows.filter((id) => id !== productId);
-        } else {
+      } else {
         return [...prevSelectedRows, productId];
-        }
-    })};
+      }
+    })
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -64,75 +65,75 @@ function ShoppingList() {
 
   return (
     <div className="bg-white row mx-auto w-75 p-3 trip-container" style={{ marginTop: '20px', marginBottom: '20px' }}>
-        {trip ? (
+      {trip ? (
         <div>
-            <div className='mb-3'> 
-                <h1><u>Trip Information</u></h1>
-                <div className="row" >
-                    <div className="col-md-6 col-12">
-                        {trip.shoppingLists.map((shoppingList) => (
-                            <div key={shoppingList.shoppingListId}> 
-                                <h4>{shoppingList.companyStore}</h4>
-                                <span>
-                                    <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(shoppingList.companyStoreAddress)}`}>
-                                        {shoppingList.companyStoreAddress}
-                                    </a>
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="col-md-6 col-12">
-                        <p className='text-end m-0'>Estimated Travel Time: {trip.totalTravelTime} minutes</p>
-                        <p className='text-end m-0'>Total Grocery Cost: ${trip.totalGroceryCost}</p>
-                        <p className='text-end m-0'>Total Grocery Cost: ${trip.totalGasCost}</p>
-                        <hr style={{marginTop: '8px', marginBottom: '8px'}}/>
-                        <p className='text-end m-0'>Grand Total: ${trip.grandTotal}</p>
-                    </div>
-                </div>
+          <div className='mb-3'>
+            <h1><u>Trip Information</u></h1>
+            <div className="row" >
+              <div className="col-md-6 col-12">
+                {trip.shoppingLists.map((shoppingList) => (
+                  <div key={shoppingList.shoppingListId}>
+                    <h4>{shoppingList.companyStore}</h4>
+                    <span>
+                      <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(shoppingList.companyStoreAddress)}`}>
+                        {shoppingList.companyStoreAddress}
+                      </a>
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="col-md-6 col-12">
+                <p className='text-end m-0'>Estimated Travel Time: {trip.totalTravelTime} minutes</p>
+                <p className='text-end m-0'>Total Grocery Cost: ${trip.totalGroceryCost}</p>
+                <p className='text-end m-0'>Total Grocery Cost: ${trip.totalGasCost}</p>
+                <hr style={{ marginTop: '8px', marginBottom: '8px' }} />
+                <p className='text-end m-0'>Grand Total: ${trip.grandTotal}</p>
+              </div>
             </div>
-            {trip.shoppingLists.map((shoppingList) => (
+          </div>
+          {trip.shoppingLists.map((shoppingList) => (
             <div key={shoppingList.shoppingListId}>
-                <h2 className='text-center'>{shoppingList.companyStore}</h2>
-                <div className='table-responsive'>
+              <h2 className='text-center'>{shoppingList.companyStore}</h2>
+              <div className='table-responsive'>
                 <table className="table">
-                <thead>
+                  <thead>
                     <tr>
-                    <th></th>
-                    <th class="text-start">Name</th>
-                    <th class="text-center">Price</th>
-                    <th class="text-center">Quantity</th>
-                    <th class="text-center">Total</th>
-                    <th class="text-center">In Cart</th>
-                    <th></th>
-                    <th></th>
+                      <th></th>
+                      <th class="text-start">Name</th>
+                      <th class="text-center">Price</th>
+                      <th class="text-center">Quantity</th>
+                      <th class="text-center">Total</th>
+                      <th class="text-center">In Cart</th>
+                      <th></th>
+                      <th></th>
                     </tr>
-                </thead>
-                <tbody>
+                  </thead>
+                  <tbody>
                     {shoppingList.shoppingListProductResponseList.map((product) => (
-                    <tr key={product.id} className={selectedRows.includes(product.id) ? 'selected-row' : ''}>
+                      <tr key={product.id} className={selectedRows.includes(product.id) ? 'selected-row' : ''}>
                         <td><img src={product.productImage} alt={product.productName} className="product-image" /></td>
                         <td class="text-start align-items-end">{product.productName}</td>
                         <td class="text-center align-items-end">${product.price}</td>
                         <td class="text-center align-items-end">{product.quantity}</td>
                         <td class="text-center align-items-end">${product.total}</td>
                         <td class="text-center align-items-end">
-                        <input
+                          <input
                             type="checkbox"
                             value="selected"
                             onClick={() => toggleSelectedRow(product.id)}
-                        />
+                          />
                         </td>
-                    </tr>
+                      </tr>
                     ))}
-                </tbody>
+                  </tbody>
                 </table>
-                </div>
+              </div>
             </div>
-            ))}
+          ))}
         </div>
-        ) : (
-            <p>Loading...</p>
-        )}
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
